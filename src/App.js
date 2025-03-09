@@ -564,26 +564,26 @@ const App = () => {
         </div>
 
       </div>
-       <div className="slider-container">
-      <h2>Latest News & Blog</h2>
-      <div className="slider">
-        <div className="slider-content" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-          {blogPosts.map((post, index) => (
-            <div key={index} className="slider-item">
-              <img src={post.image} alt={post.title} />
-              <div className="post-info">
-                <h3>{post.category}</h3>
-                <h4>{post.title}</h4>
-                <p>{post.description}</p>
-                <small>{post.date}</small>
+      {/* <div className="slider-container">
+        <h2>Latest News & Blog</h2>
+        <div className="slider">
+          <div className="slider-content" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+            {blogPosts.map((post, index) => (
+              <div key={index} className="slider-item">
+                <img src={post.image} alt={post.title} />
+                <div className="post-info">
+                  <h3>{post.category}</h3>
+                  <h4>{post.title}</h4>
+                  <p>{post.description}</p>
+                  <small>{post.date}</small>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-      <button onClick={prevSlide} className="prev-btn">Prev</button>
-      <button onClick={nextSlide} className="next-btn">Next</button>
-    </div>
+        <button onClick={prevSlide} className="prev-btn">Prev</button>
+        <button onClick={nextSlide} className="next-btn">Next</button>
+      </div> */}
     </>
   );
 };

@@ -17,6 +17,7 @@ import head2 from './assets/head-2.svg';
 import "./App.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Slider from 'react-slick';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 
@@ -244,57 +245,115 @@ const App = () => {
       category: 'Bitcoin - News',
       description: 'Start the redemption before the ICO completion Specially for our VIP customers the LH Crypto team representatives.',
       date: 'June 13, 2018',
-      image: 'https://via.placeholder.com/300', // Add dynamic image URL or replace with image path
+      image: 'https://www.ninetheme.com/themes/crypterium/wp-content/uploads/2021/03/videobg1-642x430.jpg', // Add dynamic image URL or replace with image path
     },
     {
       title: 'Start the redemption before the ICO completion',
       category: 'Bitcoin - ICO',
       description: 'Specially for our VIP customers the LH Crypto team representatives Alexander Sminov and Antonis Lapos.',
       date: 'June 13, 2018',
-      image: 'https://via.placeholder.com/300', // Add dynamic image URL or replace with image path
+      image: 'https://www.ninetheme.com/themes/crypterium/wp-content/uploads/2021/03/blog7-642x430.jpg', // Add dynamic image URL or replace with image path
     }, {
       title: 'Start the redemption before the ICO completion',
       category: 'Bitcoin - ICO',
       description: 'Specially for our VIP customers the LH Crypto team representatives Alexander Sminov and Antonis Lapos.',
       date: 'June 13, 2018',
-      image: 'https://via.placeholder.com/300', // Add dynamic image URL or replace with image path
+      image: 'https://www.ninetheme.com/themes/crypterium/wp-content/uploads/2021/03/blog8-642x430.jpg', // Add dynamic image URL or replace with image path
     }, {
       title: 'Start the redemption before the ICO completion',
       category: 'Bitcoin - ICO',
       description: 'Specially for our VIP customers the LH Crypto team representatives Alexander Sminov and Antonis Lapos.',
       date: 'June 13, 2018',
-      image: 'https://via.placeholder.com/300', // Add dynamic image URL or replace with image path
+      image: 'https://www.ninetheme.com/themes/crypterium/wp-content/uploads/2021/03/blog3-642x430.jpg', // Add dynamic image URL or replace with image path
+    }, {
+      title: 'Crypto project has reached NormalCap!',
+      category: 'Bitcoin - News',
+      description: 'Start the redemption before the ICO completion Specially for our VIP customers the LH Crypto team representatives.',
+      date: 'June 13, 2018',
+      image: 'https://www.ninetheme.com/themes/crypterium/wp-content/uploads/2021/03/videobg1-642x430.jpg', // Add dynamic image URL or replace with image path
+    },
+    {
+      title: 'Start the redemption before the ICO completion',
+      category: 'Bitcoin - ICO',
+      description: 'Specially for our VIP customers the LH Crypto team representatives Alexander Sminov and Antonis Lapos.',
+      date: 'June 13, 2018',
+      image: 'https://www.ninetheme.com/themes/crypterium/wp-content/uploads/2021/03/blog7-642x430.jpg', // Add dynamic image URL or replace with image path
     }, {
       title: 'Start the redemption before the ICO completion',
       category: 'Bitcoin - ICO',
       description: 'Specially for our VIP customers the LH Crypto team representatives Alexander Sminov and Antonis Lapos.',
       date: 'June 13, 2018',
-      image: 'https://via.placeholder.com/300', // Add dynamic image URL or replace with image path
+      image: 'https://www.ninetheme.com/themes/crypterium/wp-content/uploads/2021/03/blog8-642x430.jpg', // Add dynamic image URL or replace with image path
     }, {
       title: 'Start the redemption before the ICO completion',
       category: 'Bitcoin - ICO',
       description: 'Specially for our VIP customers the LH Crypto team representatives Alexander Sminov and Antonis Lapos.',
       date: 'June 13, 2018',
-      image: 'https://via.placeholder.com/300', // Add dynamic image URL or replace with image path
-    }, {
-      title: 'Start the redemption before the ICO completion',
-      category: 'Bitcoin - ICO',
-      description: 'Specially for our VIP customers the LH Crypto team representatives Alexander Sminov and Antonis Lapos.',
-      date: 'June 13, 2018',
-      image: 'https://via.placeholder.com/300', // Add dynamic image URL or replace with image path
+      image: 'https://www.ninetheme.com/themes/crypterium/wp-content/uploads/2021/03/blog3-642x430.jpg', // Add dynamic image URL or replace with image path
     },
 
   ];
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  // Function to go to the next slide
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % blogPosts.length);
+  const settings = {
+    infinite: true,  // Loop through the slides infinitely
+    speed: 500,      // Transition speed between slides
+    slidesToShow: 4, // Number of slides visible at once
+    slidesToScroll: 1, // Number of slides to scroll at a time
+    dots: false,      // Enable dots for navigation
+    autoplay: true,  // Enable auto-play
+    autoplaySpeed: 2000,      // Enable dots for navigation
+    responsive: [
+      {
+        breakpoint: 1024,  // Medium devices (like tablets)
+        settings: {
+          slidesToShow: 3,  // Show 3 slides on medium screens
+        },
+      },
+      {
+        breakpoint: 600,   // Small devices (like mobile)
+        settings: {
+          slidesToShow: 1,  // Show 1 slide on small screens
+        },
+      },
+    ],
   };
+  const [activeIndex, setActiveIndex] = useState(1);
 
-  // Function to go to the previous slide
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + blogPosts.length) % blogPosts.length);
+  const faqData = [
+    {
+      question: "Can American citizens take part in the crowdsale?",
+      answer: "JavaScript is also used in environments that aren’t web-based, such as PDF documents, site-specific browsers, and desktop widgets. Newer and faster JavaScript virtual machines (VMs) and platforms built upon them have also increased the popularity of JavaScript for server-side web applications. On the client side, JavaScript has been traditionally implemented as an interpreted language, but more recent browsers per."
+    },
+    {
+      question: "Does the crowdsale comply with legal regulations?",
+      answer: "The legal regulations around crowdsales ensure the project follows the necessary laws and guidelines. In many jurisdictions, a token sale or crowdsale is regulated to protect the investors, as well as to ensure transparency and fairness."
+    },
+    {
+      question: "Can I trade SCR at an exchange?",
+      answer: "Yes, SCR (Scorum) can be traded on various exchanges like Binance, and other supported exchanges that offer SCR trading pairs."
+    },
+    {
+      question: "Why is Scorum’s economic model sustainable?",
+      answer: "Scorum's model leverages blockchain technology to ensure fairness, transparency, and a direct connection between sports enthusiasts and sports content creators. The decentralized nature supports the long-term growth of the platform."
+    },
+    {
+      question: "Can I mine SCR?",
+      answer: "Mining of SCR is possible through proof-of-stake mechanisms, allowing users to earn SCR tokens by staking their tokens. The mining process is secure and sustainable, using blockchain technology to prevent fraud and exploitation."
+    }, {
+      question: "Does the crowdsale comply with legal regulations?",
+      answer: "The legal regulations around crowdsales ensure the project follows the necessary laws and guidelines. In many jurisdictions, a token sale or crowdsale is regulated to protect the investors, as well as to ensure transparency and fairness."
+    },
+    {
+      question: "Can I trade SCR at an exchange?",
+      answer: "Yes, SCR (Scorum) can be traded on various exchanges like Binance, and other supported exchanges that offer SCR trading pairs."
+    },
+    {
+      question: "Why is Scorum’s economic model sustainable?",
+      answer: "Scorum's model leverages blockchain technology to ensure fairness, transparency, and a direct connection between sports enthusiasts and sports content creators. The decentralized nature supports the long-term growth of the platform."
+    },
+  ];
+
+  const toggleAnswer = (index) => {
+    setActiveIndex(activeIndex === index ? null : index);
   };
   return (
     <>
@@ -564,26 +623,49 @@ const App = () => {
         </div>
 
       </div>
-      {/* <div className="slider-container">
-        <h2>Latest News & Blog</h2>
-        <div className="slider">
-          <div className="slider-content" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-            {blogPosts.map((post, index) => (
-              <div key={index} className="slider-item">
-                <img src={post.image} alt={post.title} />
-                <div className="post-info">
-                  <h3>{post.category}</h3>
-                  <h4>{post.title}</h4>
-                  <p>{post.description}</p>
-                  <small>{post.date}</small>
-                </div>
-              </div>
-            ))}
-          </div>
+      <div className="slider-container container">
+        <div className="heading" style={{ margin: '50px 0 80px 0' }}>
+          <h1 className="map-main-head" style={{ color: '#000' }}>Latest News & Blog</h1>
         </div>
-        <button onClick={prevSlide} className="prev-btn">Prev</button>
-        <button onClick={nextSlide} className="next-btn">Next</button>
-      </div> */}
+        <Slider {...settings}>
+          {blogPosts.map((post, index) => (
+            <div key={index} className="slider-item">
+              <div className="image-w">
+                <img src={post.image} alt={post.title} />
+              </div>
+              <div className="post-info">
+                <h3>{post.category}</h3>
+                <h4>{post.title}</h4>
+                <p>{post.description}</p>
+                <small>{post.date}</small>
+              </div>
+            </div>
+          ))}
+        </Slider>
+      </div>
+      <div className="faq-container text-center">
+        <div className="heading" style={{ margin: '0px 0 60px 0' }}>
+          <h1 className="map-main-head" style={{ color: '#000' }}>Have any questions?</h1>
+        </div>
+        <div className="faq-list">
+          {faqData.map((faq, index) => (
+            <div key={index} className="faq-item">
+              <div
+                className={`faq-question ${activeIndex === index ? 'active' : ''}`}
+                onClick={() => toggleAnswer(index)}
+              >
+                {faq.question}
+                <span className={`faq-icon `}> {activeIndex === index ? <svg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10" fill="none">
+                  <path d="M5.13397 0.5C5.51887 -0.166667 6.48113 -0.166667 6.86603 0.5L11.1962 8C11.5811 8.66667 11.0999 9.5 10.3301 9.5H1.66987C0.900073 9.5 0.418948 8.66667 0.803848 8L5.13397 0.5Z" fill="white" />
+                </svg> : <svg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10" fill="none">
+                  <path d="M5.13397 9.5C5.51887 10.1667 6.48113 10.1667 6.86603 9.5L11.1962 2C11.5811 1.33333 11.0999 0.5 10.3301 0.5H1.66987C0.900073 0.5 0.418948 1.33333 0.803848 2L5.13397 9.5Z" fill="#B8B8B8" />
+                </svg>}</span>
+              </div>
+              {activeIndex === index && <div className="faq-answer text-start">{faq.answer}</div>}
+            </div>
+          ))}
+        </div>
+      </div>
     </>
   );
 };

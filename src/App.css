@@ -606,8 +606,9 @@ canvas {
 
 /* Slider Container */
 .slider-container {
-  width: 80%;
-  margin: 0 auto;
+  position: relative;
+  padding: 50px auto;
+  height: 100vh;
   text-align: center;
 }
 
@@ -618,72 +619,193 @@ canvas {
 }
 
 /* Positioning the content inside the slider */
-.slider-content {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 cards per slide */
-  gap: 20px;
-  transition: transform 0.5s ease-in-out;
-}
 
-/* Each blog card */
-.slider-item {
-  background: #fff;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.post-info {
+  background: #FFF;
+  box-shadow: 0px 4px 24px 2px #F6F6F6;
   text-align: left;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  padding: 20px;
 }
 
-/* Style for image */
-.slider-item img {
+.image-w {
   width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 10px;
+  height: 240px;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Style for the post information */
+.slider-item img {
+  /* Fixed height */
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  /* Ensures image retains its aspect ratio without stretching */
+  transition: transform 0.3s ease;
+  /* Smooth transition for zoom effect */
+}
+
+/* Zoom effect when hovering */
+.slider-item img:hover {
+  transform: scale(1.2);
+  /* Zoom the image horizontally and vertically */
+}
+
+
+
+.slick-slide {
+  margin-right: 50px;
+  /* Adds gap between slides */
+}
+
+.slick-track {
+  display: flex;
+  height: 40vh;
+  /* Align items in a row */
+}
+
+.slick-slide:last-child {
+  margin-right: 0;
+  /* Prevents gap after the last slide */
+}
+
 .post-info h3 {
-  font-size: 18px;
-  color: green;
+  color: #16BF86;
+  margin: 10px 0;
+  font-family: Outfit;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
 }
 
 .post-info h4 {
-  font-size: 20px;
-  margin: 10px 0;
+  color: #000;
+  font-family: Outfit;
+  font-size: 19px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  width: 208px;
+  margin: 18px 0;
 }
 
 .post-info p {
-  font-size: 14px;
-  color: #555;
+  color: #5E5959;
+  font-family: Outfit;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%;
+  /* 20.8px */
 }
 
 .post-info small {
-  font-size: 12px;
-  color: #aaa;
+  color: #000;
+  font-family: Outfit;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 
-/* Buttons to navigate the slider */
-.prev-btn, .next-btn {
+.slick-dots {
   position: absolute;
-  top: 50%;
-  background: rgba(0, 0, 0, 0.5);
-  color: #fff;
+  bottom: 10px;
+  /* Position the dots slightly at the bottom */
+  width: 100%;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+.slick-dots li button:before {
+  font-size: 12px;
+  color: grey;
+  /* Default color for inactive dots */
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #32CD32;
+  /* Active dot color (green) */
+  transform: scale(1.5);
+  /* Slightly bigger active dot */
+}
+
+/* Styling for the dot's button */
+.slick-dots li button {
+  background: transparent;
   border: none;
-  padding: 10px;
+  outline: none;
+}
+
+/* Optionally, you can add hover effect */
+.slick-dots li button:hover:before {
+  color: #32CD32;
+  /* Green on hover */
+}
+
+.faq-container {
+  max-width: 993px;
+  width: 100%;
+  margin: 40px auto 100px auto;
+}
+
+.faq-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+
+.faq-question:hover {
+  background-color: #f1f1f1;
+}
+
+.faq-question.active {
+  background: #1F1C1A;
+  color: #FFF;
+  padding: 15px 25px;
+  font-family: Outfit;
+  font-size: 19px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.faq-question {
+  color: #000;
+  font-family: Outfit;
+  font-size: 19px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding: 15px 25px;
+  border-radius: 2px;
   cursor: pointer;
-  font-size: 20px;
-  transform: translateY(-50%);
+  transition: background-color 0.3s ease;
+  background: #F6F6F6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.prev-btn {
-  left: 10px;
-}
-
-.next-btn {
-  right: 10px;
-}
-
-.prev-btn:hover, .next-btn:hover {
-  background: rgba(0, 0, 0, 0.7);
+.faq-answer {
+  color: #777;
+  padding: 15px 25px;
+  font-family: Outfit;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%;
+  /* 24px */
 }

@@ -336,6 +336,38 @@ function Home() {
         };
     }, []);
     const adminAddress = '3CLc2511wqVpJVwN5g2s5ZEcGK5ZwymKJvrHABcC5Ewe';
+
+    const [email, setEmail] = useState('');
+    const [message, setMessage] = useState('');
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        // Validate the email
+        if (!email) {
+            setMessage('Please enter a valid email.');
+            return;
+        }
+
+        try {
+            const response = await fetch('https://node-server-beryl.vercel.app/api/subscribe', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email }),
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                setMessage(data.message || 'Successfully subscribed!');
+            } else {
+                setMessage(data.error || 'An error occurred');
+            }
+        } catch (err) {
+            setMessage('An error occurred while subscribing');
+        }
+    };
     return (
         <>
             <div className="app-section">
@@ -361,25 +393,25 @@ function Home() {
                 </header>
                 <div className="container" style={{ paddingTop: '110px' }}>
                     <div className="row">
-                        <div className="content col-md-7">
+                        <div className="content col-xl-7 col-12">
                             <img style={{ position: 'absolute', left: '-30px', top: '24px', height: '95%' }} src={bg_part} alt="part-bg" />
                             <div className="sale-details w-100">
-                                <h1>Invest in the  <img className="mx-3 mb-1" src={head1} alt="" /> <br /> </h1>
-                                <h1 className="mt-3"><span style={{ color: '#65EA88' }} >Future </span> of <img className="mx-2" src={head2} alt="" />  Finance</h1>
+                                <h1>Invest in the  <img className="mx-3 mb-1 i1" src={head1} alt="" /> <br /> </h1>
+                                <h1 className="mt-3"><span style={{ color: '#65EA88' }} >Future </span> of <img className="mx-2 i2" src={head2} alt="" />  Finance</h1>
                                 <p className="par ">Buy tokens now and reap the benefits of the blockchain revolution!</p>
 
-                                <div className="d-flex align-items-center justify-content-between" style={{ width: '80%' }}>
+                                <div className="d-flex align-items-center justify-content-between bars" style={{ width: '80%' }}>
                                     <p className="progress-info">Stage 1: {bonus}% Bonus!</p>
                                     <div className="progress-info">
                                         <span>{saleProgress}/{totalSupply}</span>
                                     </div>
                                 </div>
-                                <div className="progress-bar">
+                                <div className="progress-bar bars">
                                     <div className="progress-bar-fill" style={{ width: `${percentage}%` }}>
                                         {`${percentage}%`}
                                     </div>
                                 </div>
-                                <p className="mt-4">1 GITTU = 0.001 USD <br />
+                                <p className="mt-4 text-white mm">1 GITTU = 0.001 USD <br />
                                     NEXT STAGE = 0.002 USD</p>
                                 <div className="referral-section">
                                     <h2>Share Your Referral Link</h2>
@@ -399,7 +431,7 @@ function Home() {
 
 
                         </div>
-                        <div className="col-md-5">
+                        <div className="col-xl-5 col-12">
                             <div className="right-sec ">
                                 <div style={{ position: 'relative', width: '100%', height: '100%' }}>
                                     <div className="bg-blur-right">
@@ -679,9 +711,21 @@ function Home() {
                         <div className="footer-subscribe">
                             <h3>Subscribe</h3>
                             <div className="referral-link py-1" style={{ width: '357px', borderRadius: '50px' }}>
-                                <input type="email" placeholder="Email" className="email-input" style={{ borderRadius: '50px' }} />
-                                <button style={{ borderRadius: '50px', fontSize: '17px' }} className="py-2" onClick={handleCopyReferralLink}>Subscribe</button>
-                            </div>
+                                <input
+                                    type="email"
+                                    placeholder="Email"
+                                    className="email-input"
+                                    style={{ borderRadius: '50px' }}
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                />
+                                <button
+                                    style={{ borderRadius: '50px', fontSize: '17px' }}
+                                    className="py-2"
+                                    onClick={handleSubmit}
+                                >
+                                    Subscribe
+                                </button></div>
                         </div>
                     </div>
                 </div>

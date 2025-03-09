@@ -1,38 +1,689 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: Outfit;
+  background-color: #ffffff;
+  color: #000000;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.app-section {
+  overflow: hidden;
+  background-color: #0B0C12;
+  height: 100%;
+  padding-bottom: 33.9px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container {
+  max-width: 100%;
+  padding: 0 50px;
+  width: 100%;
+}
+
+.header {
+  padding: 28px 0;
+  z-index: 1;
+  position: relative;
+  font-family: Outfit;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.header .nav button {
+  margin: 0 20px;
+  color: #FFF;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: normal;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.wallet-btn {
+  padding: 15px 25px;
+  margin-right: 0 !important;
+  border-radius: 25px;
+  font-size: 13px;
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(7.5px);
+  transition: all 0.3s ease-in-out;
+}
+
+.wallet-btn:hover {
+  background-color: rgba(255, 255, 255, 0.085) !important;
+}
+
+.content {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+
+.sale-details h1 {
+  color: #FFF;
+  font-family: Outfit;
+  font-size: 48px;
+  font-style: normal;
+  text-transform: uppercase;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 10px;
+}
+
+.sale-details .par {
+  color: #FFF;
+  font-family: Outfit;
+  font-size: 16px;
+  font-style: normal;
+  margin: 32px 0;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.sale-details .progress-info {
+  margin: 20px 0;
+  color: #FFF !important;
+  font-family: Outfit;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 700;
+  margin-top: 15px;
+}
+
+.subtitle2 {
+  color: rgba(255, 255, 255, 0.505);
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 700;
+  margin-top: 15px;
+}
+
+.wal-head {
+  width: 100%;
+  text-align: center;
+  font-family: Outfit, sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 19px;
+  line-height: 24px;
+}
+
+.buy-now {
+  padding: 12px 48px;
+  border-radius: 29px;
+  background: linear-gradient(90deg, #65EA88 0%, #06B6D4 100%);
+  color: #FFF;
+  font-family: Outfit;
+  font-size: 16px;
+  font-style: normal;
+  margin-top: 28px;
+  font-weight: 600;
+  line-height: normal;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+}
+
+.referral-section h2 {
+  color: #FFF;
+  margin-top: 18px;
+  font-family: Outfit;
+  font-size: 19px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+
+.referral-link {
+  margin-top: 30px;
+  display: flex;
+  width: fit-content;
+  border-radius: 8px;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.referral-link input {
+  padding: 10px 15px;
+  color: #000;
+  font-family: Outfit;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%;
+  /* 19.2px */
+  width: 300px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.96) !important;
+  border-radius: 8px;
+}
+
+.ReactModal__Overlay {
+  background-color: #0d0b0b93 !important;
+  backdrop-filter: blur(4px) !important;
+  align-items: center;
+  z-index: 100;
+  display: flex;
+}
+
+.referral-link button {
+  padding: 4px 22px;
+  border-radius: 8px;
+  background: #0B0C12;
+  margin-right: 4px;
+  color: white;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.progress-bar {
+  width: 80%;
+  height: 38px;
+  border-radius: 29px;
+  border: 1px dashed rgba(255, 255, 255, 0.20);
+  background: rgba(255, 255, 255, 0.05);
+  margin: 12px 0;
+}
+
+.progress-bar-fill {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 10px;
+  color: #FFF;
+  font-family: Outfit;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0 5px;
+  text-transform: uppercase;
+  height: 22px;
+  border-radius: 29px;
+  background: linear-gradient(90deg, #65EA88 0%, #06B6D4 100%);
+}
+
+.right-sec {
+  background-image: url('./assets/bg.svg');
+  position: absolute;
+  top: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: top;
+  padding: 0 !important;
+  width: 600px;
+  /* Lower z-index to be behind */
+  height: 729px;
+  right: 0;
+}
+
+.right-sec .bg-blur-right {
+  padding: 40px 85px 20px 0;
+  background: rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(5px);
+  height: 290px;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+.countdown {
+  text-align: end;
+}
+
+.countdown h2 {
+  color: #FFF;
+  font-family: Outfit;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.countdown h1 {
+  color: #FFF;
+  font-family: Outfit;
+  font-size: 42px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+@media (max-width: 1200px) {
+
+  /* Your CSS styles go here */
+  /* Example */
+  .modals {
+    height: calc(100vh - 40px);
+  }
+}
+
+.counter {
+  justify-content: end;
+  display: flex;
+  align-items: center;
+  margin-top: 34px;
+  gap: 28px;
+}
+
+.countdown .unit {
+  color: #FFF;
+  font-family: Outfit;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.right-sec .socials img {
+  width: 50px;
+  height: 50px;
+  margin-left: 23px;
+}
+
+/* Modal Styles */
+.modals {
+  background-color: #1A1B1F;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: #fff;
+  padding: 15px 20px 10px 20px;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.32);
+  min-width: 368px;
+  width: 368px;
+  margin: auto;
+  z-index: 1000;
+}
+
+.socials {
+  overflow: hidden;
+  /* to prevent overflow */
+}
+
+.socials a {
+  position: relative;
+  transition: transform 0.3s ease;
+  /* smooth transition */
+}
+
+.socials a:hover {
+  transform: scale(2);
+  /* hover effect */
+  z-index: 10;
+  /* optional */
+}
+
+
+.modals button {
+  border: 0;
+  box-sizing: border-box;
+  font-size: 100%;
+  line-height: normal;
+  color: white;
+  width: 100%;
+  font-weight: 400;
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+  font-size: 15px;
+  margin-left: -4px;
+  transition: all 0.1s ease-in-out;
+  align-items: center;
+  border-radius: 12px;
+  padding: 8px 11px;
+  text-align: left;
+  vertical-align: baseline;
+  background-color: transparent;
+}
+
+.close {
+  background-color: rgba(224, 232, 255, 0.1) !important;
+}
+
+.close:hover {
+  transform: scale(1);
+  background-color: rgba(224, 232, 255, 0.147) !important;
+}
+
+.modals button:hover {
+  background-color: rgba(224, 232, 255, 0.1);
+}
+
+.wallet-info {
+  position: relative;
+}
+
+.wallet-info .dropdown {
+  position: absolute;
+  background-color: #fff;
+  color: #111;
+  border: 1px solid #ddd;
+  top: 30px;
+  right: 0;
+  display: none;
+}
+
+.wallet-info:hover .dropdown {
+  display: block;
+}
+
+.wallet-info button {
+  background-color: #3d91f7;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+}
+
+.wallet-info button:hover {
+  background-color: #2c74d5;
+}
+
+.wallet-info .dropdown button {
+  background-color: #f5f5f5;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.wallet-info .dropdown button:hover {
+  background-color: #ddd;
+}
+
+.loader {
+  margin-top: 20px;
+  text-align: center;
+}
+
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* HTML: <div class="loader"></div> */
+.spinner {
+  margin-top: 20px;
+  --d: 22px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  color: #ffffff;
+  box-shadow:
+    calc(1*var(--d)) calc(0*var(--d)) 0 0,
+    calc(0.707*var(--d)) calc(0.707*var(--d)) 0 1px,
+    calc(0*var(--d)) calc(1*var(--d)) 0 2px,
+    calc(-0.707*var(--d)) calc(0.707*var(--d)) 0 3px,
+    calc(-1*var(--d)) calc(0*var(--d)) 0 4px,
+    calc(-0.707*var(--d)) calc(-0.707*var(--d))0 5px,
+    calc(0*var(--d)) calc(-1*var(--d)) 0 6px;
+  animation: l27 1s infinite steps(8);
+}
+
+@keyframes l27 {
+  100% {
+    transform: rotate(1turn)
+  }
+}
+
+.video-container {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.bg-image {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 0.30) 100%), url(assets/video-bg.svg);
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.play-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  color: white;
+  text-align: center;
+}
+
+.play-button svg {
+  margin-bottom: 20px;
+}
+
+.video-player {
+  width: 100%;
+  height: 100%;
+}
+
+.video-player iframe {
+  width: 100vw;
+  height: 100%;
+  border: none;
+}
+
+.map-head {
+  color: #FFF;
+  font-family: Outfit;
+  font-size: 20px !important;
+  margin-bottom: 10px;
+  font-style: normal;
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: normal;
+}
+
+.map-main-head {
+  color: #FFF;
+  font-family: Outfit;
+  font-size: 42px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.roadmap-container {
+  height: 90vh;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), url(assets/map-bg.svg);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+}
+
+.roadmap-content {
+  position: relative;
+  text-align: center;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.roadmap-header h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.roadmap-header h1 {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.milestone {
+  text-align: center;
+  margin-left: -25px;
+}
+
+.label {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.token-distribution-container {
+  text-align: center;
+  padding: 50px 50px 10px 50px;
+}
+
+.chart-container {
+  display: grid;
+  grid-template-columns: 1fr 2.8fr;
+  /* Left (chart) takes 1 part, Right (legend) takes 2 parts */
+  gap: 10px;
+  /* Adds space between the columns */
+  justify-items: center;
+  /* Centers the content horizontally in each column */
+  align-items: center;
+}
+
+canvas {
+  width: 600px !important;
+  height: 600px !important;
+}
+
+.description {
+  text-align: start !important;
+  margin-right: -80px;
+  margin-left: 80px;
+}
+
+.description .one {
+  color: #777;
+  font-family: Outfit;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 160%;
+  /* 32px */
+}
+
+.description .two {
+  color: #777;
+  font-family: Outfit;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%;
+  /* 28.8px */
+}
+
+/* Slider Container */
+.slider-container {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Styling the slider */
+.slider {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Positioning the content inside the slider */
+.slider-content {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 cards per slide */
+  gap: 20px;
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Each blog card */
+.slider-item {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+/* Style for image */
+.slider-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Style for the post information */
+.post-info h3 {
+  font-size: 18px;
+  color: green;
+}
+
+.post-info h4 {
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.post-info p {
+  font-size: 14px;
+  color: #555;
+}
+
+.post-info small {
+  font-size: 12px;
+  color: #aaa;
+}
+
+/* Buttons to navigate the slider */
+.prev-btn, .next-btn {
+  position: absolute;
+  top: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  transform: translateY(-50%);
+}
+
+.prev-btn {
+  left: 10px;
+}
+
+.next-btn {
+  right: 10px;
+}
+
+.prev-btn:hover, .next-btn:hover {
+  background: rgba(0, 0, 0, 0.7);
 }

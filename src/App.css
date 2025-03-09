@@ -23,16 +23,27 @@ body {
   width: 100%;
 }
 
+/* Header component styles */
 .header {
-  padding: 28px 0;
-  z-index: 1;
-  position: relative;
+  padding: 50px 50px;
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  background-color: transparent;
   font-family: Outfit;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+  height: 80px;
+  /* Fixed height */
+  transition: background-color 0.3s ease;
 }
 
+/* Apply a black background when the user scrolls down */
+.header.scrolled {
+  background-color: #0B0C12;
+}
 
 .header .nav button {
   margin: 0 20px;

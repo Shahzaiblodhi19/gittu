@@ -355,29 +355,45 @@ const App = () => {
   const toggleAnswer = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  const handleScroll = () => {
+    if (window.scrollY > 5) {
+      setIsScrolled(true); // Add black background when scrolling down
+    } else {
+      setIsScrolled(false); // Reset to transparent when at the top
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   return (
     <>
       <div className="app-section">
-        <div className="container">
-          <header className="header">
-            <div className="logo">
-              <img src={Logo} alt="" />
-            </div>
-            <div className="nav">
-              <button>Create Blog</button>
-              <button>Whitepaper</button>
-              {walletAddress ? (
-                <button className="wallet-btn d-flex align-items-center" style={{ gap: '8px' }} onClick={() => setIsModalOpen(true)}>
-                  {walletAddress.slice(0, 7)}...{walletAddress.slice(-4)}
-                  <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 32 36" fill="none">
-                    <path d="M17.6142 26.3391C16.7214 27.218 15.2714 27.218 14.3785 26.3391L2.94996 15.0891C2.0571 14.2102 2.0571 12.7828 2.94996 11.9039C3.84282 11.025 5.29282 11.025 6.18568 11.9039L16 21.5648L25.8142 11.9109C26.7071 11.032 28.1571 11.032 29.05 11.9109C29.9428 12.7898 29.9428 14.2172 29.05 15.0961L17.6214 26.3461L17.6142 26.3391Z" fill="white" />
-                  </svg>
-                </button>
-              ) : (
-                <button className="wallet-btn" onClick={() => setIsModalOpen(true)}>Connect Wallet</button>
-              )}
-            </div>
-          </header>
+        <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
+          <div className="logo">
+            <img src={Logo} alt="" />
+          </div>
+          <div className="nav">
+            <button>Create Blog</button>
+            <button>Whitepaper</button>
+            {walletAddress ? (
+              <button className="wallet-btn d-flex align-items-center" style={{ gap: '8px' }} onClick={() => setIsModalOpen(true)}>
+                {walletAddress.slice(0, 7)}...{walletAddress.slice(-4)}
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 32 36" fill="none">
+                  <path d="M17.6142 26.3391C16.7214 27.218 15.2714 27.218 14.3785 26.3391L2.94996 15.0891C2.0571 14.2102 2.0571 12.7828 2.94996 11.9039C3.84282 11.025 5.29282 11.025 6.18568 11.9039L16 21.5648L25.8142 11.9109C26.7071 11.032 28.1571 11.032 29.05 11.9109C29.9428 12.7898 29.9428 14.2172 29.05 15.0961L17.6214 26.3461L17.6142 26.3391Z" fill="white" />
+                </svg>
+              </button>
+            ) : (
+              <button className="wallet-btn" onClick={() => setIsModalOpen(true)}>Connect Wallet</button>
+            )}
+          </div>
+        </header>
+        <div className="container" style={{paddingTop: '110px'}}>
           <div className="row">
             <div className="content col-md-7">
               <img style={{ position: 'absolute', left: '-30px', top: '24px', height: '95%' }} src={bg_part} alt="part-bg" />
@@ -694,9 +710,9 @@ const App = () => {
             </div>
             <div className="footer-subscribe">
               <h3>Subscribe</h3>
-              <div className="referral-link py-1" style={{width: '357px',borderRadius: '50px'}}>
-                <input type="email" placeholder="Email" className="email-input"  style={{borderRadius: '50px'}}/>
-                <button style={{borderRadius: '50px',fontSize: '17px'}} className="py-2" onClick={handleCopyReferralLink}>Subscribe</button>
+              <div className="referral-link py-1" style={{ width: '357px', borderRadius: '50px' }}>
+                <input type="email" placeholder="Email" className="email-input" style={{ borderRadius: '50px' }} />
+                <button style={{ borderRadius: '50px', fontSize: '17px' }} className="py-2" onClick={handleCopyReferralLink}>Subscribe</button>
               </div>
             </div>
           </div>

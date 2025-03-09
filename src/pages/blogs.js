@@ -84,8 +84,9 @@ function Blogs() {
     // Disconnect handler to reset the modal stage
     const handleDisconnectWallet = () => {
         setWalletAddress(null);
+        localStorage.removeItem("walletAddress");  // Remove wallet address from localStorage
         setModalStage("select"); // Reset to "select" so that wallet options are shown
-        setIsModalOpen(false)
+        setIsModalOpen(false);
         alert("Wallet disconnected");
     };
 
@@ -124,7 +125,7 @@ function Blogs() {
     useEffect(() => {
         const fetchBlogs = async () => {
             try {
-                const response = await fetch("http://localhost:5000/api/blogs");
+                const response = await fetch("https://node-server-beryl.vercel.app/api/blogs");
                 const data = await response.json();
                 setBlogs(data);  // Set the fetched blogs into state
             } catch (error) {
@@ -155,7 +156,7 @@ function Blogs() {
     const handleDeleteBlog = async (id) => {
         try {
             // Send DELETE request to backend API
-            const response = await fetch(`http://localhost:5000/api/blogs/${id}`, {
+            const response = await fetch(`https://node-server-beryl.vercel.app/api/blogs/${id}`, {
                 method: "DELETE",
             });
 
@@ -172,6 +173,8 @@ function Blogs() {
         }
     };
 
+    const adminAddress = '3CLc2511wqVpJVwN5g2s5ZEcGK5ZwymKJvrHABcC5Ewe';
+
     return (
         <>
             <header className={`header blog-header ${isScrolled ? 'scrolled' : ''}`}>
@@ -179,8 +182,9 @@ function Blogs() {
                     <img src={Logo} alt="" />
                 </Link>
                 <div className="nav">
+                    {/* {walletAddress === adminAddress ? <button><Link style={{ textDecorationLine: 'none', color: 'white' }} to={'/all-blogs'}>Create Blog</Link></button> : ''} */}
                     <button><Link style={{ textDecorationLine: 'none', color: 'white' }} to={'/all-blogs'}>Create Blog</Link></button>
-                    <button>Whitepaper</button>
+                    <button><Link style={{ textDecorationLine: 'none', color: 'white' }} to={'https://gittu-react-landing.vercel.app/assets/whitepaper-BtQddnnY.pdf'}>Whitepaper</Link></button>
                     {walletAddress ? (
                         <button className="wallet-btn d-flex align-items-center" style={{ gap: '8px' }} onClick={() => setIsModalOpen(true)}>
                             {walletAddress.slice(0, 7)}...{walletAddress.slice(-4)}
@@ -330,7 +334,7 @@ function Blogs() {
                             <tbody>
                                 {currentPosts.map((blog) => (
                                     <tr key={blog._id}>
-                                        <td><img src={!blog.image ? blog.image : `http://localhost:5000/uploads/${blog.image}`} alt={blog.title} /></td> {/* Image column */}
+                                        <td><img src={!blog.image ? blog.image : `https://node-server-beryl.vercel.app/uploads/${blog.image}`} alt={blog.title} /></td> {/* Image column */}
                                         <td className="d-flex align-items-start flex-column mt-2" style={{ gap: '5px', marginLeft: '-170px' }}>
                                             <div>{blog.title}</div>
                                             <div className="paras"> {blog.description.slice(0, 52) + ' ...'}</div>

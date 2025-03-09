@@ -78,19 +78,21 @@ function Home() {
                     });
                     const web3 = new Web3(window.ethereum);
                     const accounts = await web3.eth.requestAccounts();
-                    setWalletAddress(accounts[0]);
+                    const walletAddress = accounts[0];
+                    setWalletAddress(walletAddress);
+                    localStorage.setItem("walletAddress", walletAddress);  // Store wallet address in localStorage
                     setModalStage("connected");
                     setIsModalOpen(false); // Close the modal immediately after connection
                 }
-
                 else if (wallet === "Phantom" && window.solana?.isPhantom) {
                     await window.solana.request({ method: "connect" }); // Opens Phantom UI
                     const response = await window.solana.connect();
-                    setWalletAddress(response.publicKey.toString());
+                    const walletAddress = response.publicKey.toString();
+                    setWalletAddress(walletAddress);
+                    localStorage.setItem("walletAddress", walletAddress);  // Store wallet address in localStorage
                     setModalStage("connected");
                     setIsModalOpen(false); // Close the modal immediately after connection
                 }
-
                 else if (wallet === "WalletConnect") {
                     const provider = new WalletConnectProvider({
                         rpc: { 1: "https://mainnet.infura.io/v3/YOUR_INFURA_PROJECT_ID" }
@@ -99,11 +101,12 @@ function Home() {
                     await provider.enable(); // Opens WalletConnect QR
                     const web3 = new Web3(provider);
                     const accounts = await web3.eth.getAccounts();
-                    setWalletAddress(accounts[0]);
+                    const walletAddress = accounts[0];
+                    setWalletAddress(walletAddress);
+                    localStorage.setItem("walletAddress", walletAddress);  // Store wallet address in localStorage
                     setModalStage("connected");
                     setIsModalOpen(false); // Close the modal immediately after connection
                 }
-
                 else {
                     alert("Please install the selected wallet.");
                     setModalStage("select");
@@ -115,6 +118,7 @@ function Home() {
             }
         }, 2000); // Simulate delay while opening wallet
     };
+
 
     // Countdown Timer (63 days, 8 hours)
     useEffect(() => {
@@ -169,13 +173,14 @@ function Home() {
         alert("Referral link copied to clipboard!");
     };
 
-    // Disconnect handler to reset the modal stage
     const handleDisconnectWallet = () => {
         setWalletAddress(null);
+        localStorage.removeItem("walletAddress");  // Remove wallet address from localStorage
         setModalStage("select"); // Reset to "select" so that wallet options are shown
-        setIsModalOpen(false)
+        setIsModalOpen(false);
         alert("Wallet disconnected");
     };
+
 
     const handleDropdownSelect = (action) => {
         if (action === "disconnect") {
@@ -241,7 +246,7 @@ function Home() {
     useEffect(() => {
         const fetchBlogs = async () => {
             try {
-                const response = await fetch("http://localhost:5000/api/blogs");
+                const response = await fetch("https://node-server-beryl.vercel.app/api/blogs");
                 const data = await response.json();
                 setblogPosts(data);  // Set the fetched blogs into state
             } catch (error) {
@@ -330,6 +335,7 @@ function Home() {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
+    const adminAddress = '3CLc2511wqVpJVwN5g2s5ZEcGK5ZwymKJvrHABcC5Ewe';
     return (
         <>
             <div className="app-section">
@@ -338,8 +344,9 @@ function Home() {
                         <img src={Logo} alt="" />
                     </Link>
                     <div className="nav">
+                        {/* {walletAddress === adminAddress ? <button><Link style={{ textDecorationLine: 'none', color: 'white' }} to={'/all-blogs'}>Create Blog</Link></button> : ''} */}
                         <button><Link style={{ textDecorationLine: 'none', color: 'white' }} to={'/all-blogs'}>Create Blog</Link></button>
-                        <button>Whitepaper</button>
+                        <button><Link style={{ textDecorationLine: 'none', color: 'white' }} to={'https://gittu-react-landing.vercel.app/assets/whitepaper-BtQddnnY.pdf'}>Whitepaper</Link></button>
                         {walletAddress ? (
                             <button className="wallet-btn d-flex align-items-center" style={{ gap: '8px' }} onClick={() => setIsModalOpen(true)}>
                                 {walletAddress.slice(0, 7)}...{walletAddress.slice(-4)}
@@ -602,11 +609,11 @@ function Home() {
                 <div className="heading" style={{ margin: '50px 0 80px 0' }}>
                     <h1 className="map-main-head" style={{ color: '#000' }}>Latest News & Blog</h1>
                 </div>
-                <Slider {...settings}>
+                {blogPosts ? <Slider {...settings}>
                     {blogPosts.map((post, index) => (
                         <div key={index} className="slider-item">
                             <div className="image-w">
-                                <img src={!post.image ? post.image : `http://localhost:5000/uploads/${post.image}`} alt={post.title} />
+                                <img src={!post.image ? post.image : `https://node-server-beryl.vercel.app/uploads/${post.image}`} alt={post.title} />
                             </div>
                             <div className="post-info">
                                 <h3>{post.subHeading}</h3>
@@ -616,7 +623,9 @@ function Home() {
                             </div>
                         </div>
                     ))}
-                </Slider>
+                </Slider> : <div className="loader m-auto" style={{ position: 'absolute', top: '45%', left: '50%' }}>
+                    <div className="spinner" ></div>
+                </div>}
             </div>
             <div className="faq-container text-center">
                 <div className="heading" style={{ margin: '0px 0 60px 0' }}>

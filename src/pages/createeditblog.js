@@ -84,10 +84,12 @@ function CreateEditBlog() {
     // Disconnect handler to reset the modal stage
     const handleDisconnectWallet = () => {
         setWalletAddress(null);
+        localStorage.removeItem("walletAddress");  // Remove wallet address from localStorage
         setModalStage("select"); // Reset to "select" so that wallet options are shown
-        setIsModalOpen(false)
+        setIsModalOpen(false);
         alert("Wallet disconnected");
     };
+
 
     const handleDropdownSelect = (action) => {
         if (action === "disconnect") {
@@ -154,7 +156,7 @@ function CreateEditBlog() {
 
 
         // Send data to backend using fetch
-        fetch('http://localhost:5000/api/blogs', {
+        fetch('https://node-server-beryl.vercel.app/api/blogs', {
             method: 'POST',
             body: formData
         })
@@ -177,7 +179,7 @@ function CreateEditBlog() {
             });
     };
 
-
+    const adminAddress = '3CLc2511wqVpJVwN5g2s5ZEcGK5ZwymKJvrHABcC5Ewe';
 
     return (
         <>
@@ -186,8 +188,9 @@ function CreateEditBlog() {
                     <img src={Logo} alt="" />
                 </Link>
                 <div className="nav">
+                    {/* {walletAddress === adminAddress ? <button><Link style={{ textDecorationLine: 'none', color: 'white' }} to={'/all-blogs'}>Create Blog</Link></button> : ''} */}
                     <button><Link style={{ textDecorationLine: 'none', color: 'white' }} to={'/all-blogs'}>Create Blog</Link></button>
-                    <button>Whitepaper</button>
+                    <button><Link style={{ textDecorationLine: 'none', color: 'white' }} to={'https://gittu-react-landing.vercel.app/assets/whitepaper-BtQddnnY.pdf'}>Whitepaper</Link></button>
                     {walletAddress ? (
                         <button className="wallet-btn d-flex align-items-center" style={{ gap: '8px' }} onClick={() => setIsModalOpen(true)}>
                             {walletAddress.slice(0, 7)}...{walletAddress.slice(-4)}

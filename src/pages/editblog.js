@@ -28,7 +28,7 @@ function EditBlog() {
     useEffect(() => {
         if (id) {
             // Fetch blog data from the backend to pre-fill the form
-            fetch(`http://localhost:5000/api/blogs/${id}`)
+            fetch(`https://node-server-beryl.vercel.app/api/blogs/${id}`)
                 .then(response => response.json())
                 .then(data => {
                     setTitle(data.title);
@@ -37,7 +37,7 @@ function EditBlog() {
                     setDescription(data.description);
                     if (data.image) {
                         // If the image is a relative URL, prepend the base URL
-                        const imageUrl = !data.image.startsWith('http') ? data.image : `http://localhost:5000/uploads/${data.image}`;
+                        const imageUrl = !data.image.startsWith('https') ? data.image : `https://node-server-beryl.vercel.app/uploads/${data.image}`;
                         setImage(imageUrl); // Set the image URL correctly
                     } else {
                         setImage(null); // If no image, set to null
@@ -67,7 +67,7 @@ function EditBlog() {
 
         const method = id ? 'PUT' : 'POST';  // If editing, use PUT, else POST for creating
 
-        const url = id ? `http://localhost:5000/api/blogs/${id}` : 'http://localhost:5000/api/blogs'; // Use the ID if it's an edit
+        const url = id ? `https://node-server-beryl.vercel.app/api/blogs/${id}` : 'https://node-server-beryl.vercel.app/api/blogs'; // Use the ID if it's an edit
 
         // Send data to backend
         fetch(url, {
@@ -168,8 +168,9 @@ function EditBlog() {
     // Disconnect handler to reset the modal stage
     const handleDisconnectWallet = () => {
         setWalletAddress(null);
+        localStorage.removeItem("walletAddress");  // Remove wallet address from localStorage
         setModalStage("select"); // Reset to "select" so that wallet options are shown
-        setIsModalOpen(false)
+        setIsModalOpen(false);
         alert("Wallet disconnected");
     };
 
@@ -198,6 +199,8 @@ function EditBlog() {
         };
     }, []);
 
+    const adminAddress = '3CLc2511wqVpJVwN5g2s5ZEcGK5ZwymKJvrHABcC5Ewe';
+
     return (
         <>
             <header className={`header blog-header ${isScrolled ? 'scrolled' : ''}`}>
@@ -205,8 +208,9 @@ function EditBlog() {
                     <img src={Logo} alt="" />
                 </Link>
                 <div className="nav">
+                    {/* {walletAddress === adminAddress ? <button><Link style={{ textDecorationLine: 'none', color: 'white' }} to={'/all-blogs'}>Create Blog</Link></button> : ''} */}
                     <button><Link style={{ textDecorationLine: 'none', color: 'white' }} to={'/all-blogs'}>Create Blog</Link></button>
-                    <button>Whitepaper</button>
+                    <button><Link style={{ textDecorationLine: 'none', color: 'white' }} to={'https://gittu-react-landing.vercel.app/assets/whitepaper-BtQddnnY.pdf'}>Whitepaper</Link></button>
                     {walletAddress ? (
                         <button className="wallet-btn d-flex align-items-center" style={{ gap: '8px' }} onClick={() => setIsModalOpen(true)}>
                             {walletAddress.slice(0, 7)}...{walletAddress.slice(-4)}
@@ -377,7 +381,7 @@ function EditBlog() {
                                         />
                                         {/* Display preview image from URL if it exists */}
                                         <img
-                                            src={image && image.startsWith('blob') ? image : `http://localhost:5000/uploads/${image}`}
+                                            src={image && image.startsWith('blob') ? image : `https://node-server-beryl.vercel.app/uploads/${image}`}
                                             alt="Blog preview"
                                             className="image-preview"
                                         />

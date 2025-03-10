@@ -178,22 +178,34 @@ function Blogs() {
     return (
         <>
             <header className={`header blog-header ${isScrolled ? 'scrolled' : ''}`}>
-                <Link to={'/'} className="logo">
-                    <img src={Logo} alt="" />
-                </Link>
-                <div className="nav">
-                    {/* {walletAddress === adminAddress ? <button><Link style={{ textDecorationLine: 'none', color: 'white' }} to={'/all-blogs'}>Create Blog</Link></button> : ''} */}
-                    <button><Link style={{ textDecorationLine: 'none', color: 'white' }} to={'/all-blogs'}>Create Blog</Link></button>
-                    <button><Link style={{ textDecorationLine: 'none', color: 'white' }} to={'https://gittu-react-landing.vercel.app/assets/whitepaper-BtQddnnY.pdf'}>Whitepaper</Link></button>
+                <div className="mm  ">
+                    <Link to={'/'} className="logo">
+                        <img src={Logo} alt="" />
+                    </Link>
                     {walletAddress ? (
-                        <button className="wallet-btn d-flex align-items-center" style={{ gap: '8px' }} onClick={() => setIsModalOpen(true)}>
+                        <button className="wallet-btn hid2 d-flex align-items-center" style={{ gap: '8px' }} onClick={() => setIsModalOpen(true)}>
                             {walletAddress.slice(0, 7)}...{walletAddress.slice(-4)}
                             <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 32 36" fill="none">
                                 <path d="M17.6142 26.3391C16.7214 27.218 15.2714 27.218 14.3785 26.3391L2.94996 15.0891C2.0571 14.2102 2.0571 12.7828 2.94996 11.9039C3.84282 11.025 5.29282 11.025 6.18568 11.9039L16 21.5648L25.8142 11.9109C26.7071 11.032 28.1571 11.032 29.05 11.9109C29.9428 12.7898 29.9428 14.2172 29.05 15.0961L17.6214 26.3461L17.6142 26.3391Z" fill="white" />
                             </svg>
                         </button>
                     ) : (
-                        <button className="wallet-btn" onClick={() => setIsModalOpen(true)}>Connect Wallet</button>
+                        <button className="wallet-btn hid2" onClick={() => setIsModalOpen(true)}>Connect Wallet</button>
+                    )}
+                </div>
+                <div className="nav">
+                    {/* {walletAddress === adminAddress ? <button><Link style={{ textDecorationLine: 'none', color: 'white' }} to={'/all-blogs'}>Create Blog</Link></button> : ''} */}
+                    <button><Link style={{ textDecorationLine: 'none', color: 'white' }} to={'/all-blogs'}>Create Blog</Link></button>
+                    <button><Link style={{ textDecorationLine: 'none', color: 'white' }} to={'https://gittu-react-landing.vercel.app/assets/whitepaper-BtQddnnY.pdf'}>Whitepaper</Link></button>
+                    {walletAddress ? (
+                        <button className="wallet-btn hid1 d-flex align-items-center" style={{ gap: '8px' }} onClick={() => setIsModalOpen(true)}>
+                            {walletAddress.slice(0, 7)}...{walletAddress.slice(-4)}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 32 36" fill="none">
+                                <path d="M17.6142 26.3391C16.7214 27.218 15.2714 27.218 14.3785 26.3391L2.94996 15.0891C2.0571 14.2102 2.0571 12.7828 2.94996 11.9039C3.84282 11.025 5.29282 11.025 6.18568 11.9039L16 21.5648L25.8142 11.9109C26.7071 11.032 28.1571 11.032 29.05 11.9109C29.9428 12.7898 29.9428 14.2172 29.05 15.0961L17.6214 26.3461L17.6142 26.3391Z" fill="white" />
+                            </svg>
+                        </button>
+                    ) : (
+                        <button className="wallet-btn hid1" onClick={() => setIsModalOpen(true)}>Connect Wallet</button>
                     )}
                 </div>
             </header>
@@ -302,12 +314,12 @@ function Blogs() {
 
             </ReactModal>
 
-            <Container style={{ marginTop: '140px' }}>
+            <Container className="con" style={{ marginTop: '140px' }}>
                 <Row className="my-4">
                     <Col>
-                        <div className="d-flex align-items-center justify-content-between mb-5">
+                        <div className="d-flex align-items-center justify-content-between mb-5 m">
                             <h1>Blogs</h1>
-                            <div className="d-flex align-items-center" style={{ gap: '15px' }}>
+                            <div className="d-flex align-items-center " style={{ gap: '15px' }}>
                                 <InputGroup>
                                     <svg className="search-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" fill="none">
                                         <path d="M20.6666 18.6667H19.6133L19.24 18.3067C20.0732 17.3386 20.6822 16.1984 21.0234 14.9675C21.3645 13.7366 21.4294 12.4455 21.2133 11.1867C20.5866 7.48 17.4933 4.52 13.76 4.06666C12.4475 3.90062 11.1144 4.03703 9.86267 4.46545C8.61098 4.89387 7.47389 5.60296 6.53841 6.53844C5.60292 7.47392 4.89384 8.61101 4.46542 9.8627C4.037 11.1144 3.90059 12.4475 4.06663 13.76C4.51997 17.4933 7.47997 20.5867 11.1866 21.2133C12.4455 21.4294 13.7366 21.3645 14.9675 21.0234C16.1983 20.6823 17.3386 20.0733 18.3066 19.24L18.6666 19.6133V20.6667L24.3333 26.3333C24.88 26.88 25.7733 26.88 26.32 26.3333C26.8666 25.7867 26.8666 24.8933 26.32 24.3467L20.6666 18.6667ZM12.6666 18.6667C9.34663 18.6667 6.66663 15.9867 6.66663 12.6667C6.66663 9.34666 9.34663 6.66666 12.6666 6.66666C15.9866 6.66666 18.6666 9.34666 18.6666 12.6667C18.6666 15.9867 15.9866 18.6667 12.6666 18.6667Z" fill="#8B8B8B" />
@@ -322,41 +334,43 @@ function Blogs() {
                                 <button className="blog-btn"><Link to={'/create-edit-blog'} style={{ color: 'white', textDecoration: 'none' }}>Add New Blog</Link></button>
                             </div>
                         </div>
-                        <table className="m-auto mb-4">
-                            <thead>
-                                <tr>
-                                    <th>Image</th>
-                                    <th>Title</th>
-                                    <th>Sub-heading</th>
-                                    <th>Date</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {currentPosts.map((blog) => (
-                                    <tr key={blog._id}>
-                                        <td><img src={!blog.image ? blog.image : `https://node-server-beryl.vercel.app/uploads/${blog.image}`} alt={blog.title} /></td> {/* Image column */}
-                                        <td className="d-flex align-items-start flex-column mt-2" style={{ gap: '5px', marginLeft: '-170px' }}>
-                                            <div>{blog.title}</div>
-                                            <div className="paras"> {blog.description.slice(0, 52) + ' ...'}</div>
-                                        </td>
-                                        <td>{blog.subHeading}</td>
-                                        <td>{blog.date}</td>
-                                        <td><Link to={`/edit-blog/${blog._id}`}>
-                                            <svg className="me-2 edit-ico" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 28 28" fill="none">
-                                                <path d="M3.5 24.5V19.5417L18.9 4.17083C19.1333 3.95694 19.3912 3.79167 19.6735 3.675C19.9558 3.55833 20.2522 3.5 20.5625 3.5C20.8728 3.5 21.1742 3.55833 21.4667 3.675C21.7591 3.79167 22.0119 3.96667 22.225 4.2L23.8292 5.83333C24.0625 6.04722 24.2328 6.3 24.3402 6.59167C24.4475 6.88333 24.5008 7.175 24.5 7.46667C24.5 7.77778 24.4467 8.0745 24.3402 8.35683C24.2336 8.63917 24.0633 8.89661 23.8292 9.12917L8.45833 24.5H3.5ZM20.5333 9.1L22.1667 7.46667L20.5333 5.83333L18.9 7.46667L20.5333 9.1Z" fill="black" />
-                                            </svg>
-                                        </Link>
-                                            <svg onClick={() => handleDeleteBlog(blog._id)} className="delete-ico" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 27 27" fill="none">
-                                                <path d="M6.75 21.375C6.75 22.6125 7.7625 23.625 9 23.625H18C19.2375 23.625 20.25 22.6125 20.25 21.375V10.125C20.25 8.8875 19.2375 7.875 18 7.875H9C7.7625 7.875 6.75 8.8875 6.75 10.125V21.375ZM20.25 4.5H17.4375L16.6388 3.70125C16.4362 3.49875 16.1438 3.375 15.8512 3.375H11.1487C10.8562 3.375 10.5638 3.49875 10.3612 3.70125L9.5625 4.5H6.75C6.13125 4.5 5.625 5.00625 5.625 5.625C5.625 6.24375 6.13125 6.75 6.75 6.75H20.25C20.8687 6.75 21.375 6.24375 21.375 5.625C21.375 5.00625 20.8687 4.5 20.25 4.5Z" fill="black" />
-                                            </svg>
-                                        </td>
+                        <div className="table-wrap" style={{ overflowX: 'auto', maxWidth: '100%' }}>
+                            <table className="m-auto mb-4 w-100" style={{ minWidth: '1000px' }}>
+                                <thead>
+                                    <tr>
+                                        <th>Image</th>
+                                        <th>Title</th>
+                                        <th>Sub-heading</th>
+                                        <th>Date</th>
+                                        <th>Actions</th>
                                     </tr>
-                                ))
-                                }
-                            </tbody>
-                        </table>
-                        <div className="d-flex align-items-center justify-content-between" >
+                                </thead>
+                                <tbody>
+                                    {currentPosts.map((blog) => (
+                                        <tr key={blog._id}>
+                                            <td><img src={!blog.image ? blog.image : `https://node-server-beryl.vercel.app/uploads/${blog.image}`} alt={blog.title} /></td> {/* Image column */}
+                                            <td className="d-flex align-items-start flex-column mt-2 table-cell" style={{ gap: '5px', marginLeft: '-170px' }}>
+                                                <div>{blog.title}</div>
+                                                <div className="paras">{blog.description.slice(0, 52) + ' ...'}</div>
+                                            </td>
+                                            <td>{blog.subHeading}</td>
+                                            <td>{blog.date}</td>
+                                            <td>
+                                                <Link to={`/edit-blog/${blog._id}`}>
+                                                    <svg className="me-2 edit-ico" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 28 28" fill="none">
+                                                        <path d="M3.5 24.5V19.5417L18.9 4.17083C19.1333 3.95694 19.3912 3.79167 19.6735 3.675C19.9558 3.55833 20.2522 3.5 20.5625 3.5C20.8728 3.5 21.1742 3.55833 21.4667 3.675C21.7591 3.79167 22.0119 3.96667 22.225 4.2L23.8292 5.83333C24.0625 6.04722 24.2328 6.3 24.3402 6.59167C24.4475 6.88333 24.5008 7.175 24.5 7.46667C24.5 7.77778 24.4467 8.0745 24.3402 8.35683C24.2336 8.63917 24.0633 8.89661 23.8292 9.12917L8.45833 24.5H3.5ZM20.5333 9.1L22.1667 7.46667L20.5333 5.83333L18.9 7.46667L20.5333 9.1Z" fill="black" />
+                                                    </svg>
+                                                </Link>
+                                                <svg onClick={() => handleDeleteBlog(blog._id)} className="delete-ico" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 27 27" fill="none">
+                                                    <path d="M6.75 21.375C6.75 22.6125 7.7625 23.625 9 23.625H18C19.2375 23.625 20.25 22.6125 20.25 21.375V10.125C20.25 8.8875 19.2375 7.875 18 7.875H9C7.7625 7.875 6.75 8.8875 6.75 10.125V21.375ZM20.25 4.5H17.4375L16.6388 3.70125C16.4362 3.49875 16.1438 3.375 15.8512 3.375H11.1487C10.8562 3.375 10.5638 3.49875 10.3612 3.70125L9.5625 4.5H6.75C6.13125 4.5 5.625 5.00625 5.625 5.625C5.625 6.24375 6.13125 6.75 6.75 6.75H20.25C20.8687 6.75 21.375 6.24375 21.375 5.625C21.375 5.00625 20.8687 4.5 20.25 4.5Z" fill="black" />
+                                                </svg>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                        <div className="d-flex align-items-center justify-content-between m n" >
                             <span>Showing {indexOfFirstPost + 1} to {indexOfLastPost} of {filteredBlogs.length} blogs</span>
                             <div className="d-flex align-items-center" style={{ gap: '15px' }}>
                                 <select

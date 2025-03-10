@@ -154,24 +154,27 @@ function CreateEditBlog() {
             return;
         }
 
-
         // Send data to backend using fetch
         fetch('https://node-server-beryl.vercel.app/api/blogs', {
             method: 'POST',
             body: formData
         })
-            .then(response => response.json())
+            .then(response => response.json()) // Convert response to JSON
             .then(data => {
                 console.log('Blog created:', data);
+                if (data.error) {
+                    alert(`Error: ${data.error}`); // Fixed string interpolation
+                } else {
+                    // Success - navigate
+                    navigate('/all-blogs');
+                }
+
                 // Clear the form fields
                 setTitle('');
                 setSubHeading('');
                 setDate('');
                 setDescription('');
                 setImage(null); // Clear the image preview
-
-                // Navigate to '/all-blogs' after successful blog creation
-                navigate('/all-blogs');
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -179,27 +182,40 @@ function CreateEditBlog() {
             });
     };
 
+
     const adminAddress = '3CLc2511wqVpJVwN5g2s5ZEcGK5ZwymKJvrHABcC5Ewe';
 
     return (
         <>
             <header className={`header blog-header ${isScrolled ? 'scrolled' : ''}`}>
-                <Link to={'/'} className="logo">
-                    <img src={Logo} alt="" />
-                </Link>
-                <div className="nav">
-                    {/* {walletAddress === adminAddress ? <button><Link style={{ textDecorationLine: 'none', color: 'white' }} to={'/all-blogs'}>Create Blog</Link></button> : ''} */}
-                    <button><Link style={{ textDecorationLine: 'none', color: 'white' }} to={'/all-blogs'}>Create Blog</Link></button>
-                    <button><Link style={{ textDecorationLine: 'none', color: 'white' }} to={'https://gittu-react-landing.vercel.app/assets/whitepaper-BtQddnnY.pdf'}>Whitepaper</Link></button>
+                <div className="mm  ">
+                    <Link to={'/'} className="logo">
+                        <img src={Logo} alt="" />
+                    </Link>
                     {walletAddress ? (
-                        <button className="wallet-btn d-flex align-items-center" style={{ gap: '8px' }} onClick={() => setIsModalOpen(true)}>
+                        <button className="wallet-btn hid2 d-flex align-items-center" style={{ gap: '8px' }} onClick={() => setIsModalOpen(true)}>
                             {walletAddress.slice(0, 7)}...{walletAddress.slice(-4)}
                             <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 32 36" fill="none">
                                 <path d="M17.6142 26.3391C16.7214 27.218 15.2714 27.218 14.3785 26.3391L2.94996 15.0891C2.0571 14.2102 2.0571 12.7828 2.94996 11.9039C3.84282 11.025 5.29282 11.025 6.18568 11.9039L16 21.5648L25.8142 11.9109C26.7071 11.032 28.1571 11.032 29.05 11.9109C29.9428 12.7898 29.9428 14.2172 29.05 15.0961L17.6214 26.3461L17.6142 26.3391Z" fill="white" />
                             </svg>
                         </button>
                     ) : (
-                        <button className="wallet-btn" onClick={() => setIsModalOpen(true)}>Connect Wallet</button>
+                        <button className="wallet-btn hid2" onClick={() => setIsModalOpen(true)}>Connect Wallet</button>
+                    )}
+                </div>
+                <div className="nav">
+                    {/* {walletAddress === adminAddress ? <button><Link style={{ textDecorationLine: 'none', color: 'white' }} to={'/all-blogs'}>Create Blog</Link></button> : ''} */}
+                    <button><Link style={{ textDecorationLine: 'none', color: 'white' }} to={'/all-blogs'}>Create Blog</Link></button>
+                    <button><Link style={{ textDecorationLine: 'none', color: 'white' }} to={'https://gittu-react-landing.vercel.app/assets/whitepaper-BtQddnnY.pdf'}>Whitepaper</Link></button>
+                    {walletAddress ? (
+                        <button className="wallet-btn hid1 d-flex align-items-center" style={{ gap: '8px' }} onClick={() => setIsModalOpen(true)}>
+                            {walletAddress.slice(0, 7)}...{walletAddress.slice(-4)}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 32 36" fill="none">
+                                <path d="M17.6142 26.3391C16.7214 27.218 15.2714 27.218 14.3785 26.3391L2.94996 15.0891C2.0571 14.2102 2.0571 12.7828 2.94996 11.9039C3.84282 11.025 5.29282 11.025 6.18568 11.9039L16 21.5648L25.8142 11.9109C26.7071 11.032 28.1571 11.032 29.05 11.9109C29.9428 12.7898 29.9428 14.2172 29.05 15.0961L17.6214 26.3461L17.6142 26.3391Z" fill="white" />
+                            </svg>
+                        </button>
+                    ) : (
+                        <button className="wallet-btn hid1" onClick={() => setIsModalOpen(true)}>Connect Wallet</button>
                     )}
                 </div>
             </header>

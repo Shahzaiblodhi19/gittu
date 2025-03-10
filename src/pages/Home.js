@@ -250,6 +250,7 @@ function Home() {
             try {
                 const response = await fetch("https://node-server-beryl.vercel.app/api/blogs");
                 const data = await response.json();
+                console.log(data)
                 setblogPosts(data);  // Set the fetched blogs into state
             } catch (error) {
                 console.error("Error fetching blogs:", error);
@@ -271,7 +272,7 @@ function Home() {
             {
                 breakpoint: 1024,  // Medium devices (like tablets)
                 settings: {
-                    slidesToShow: 3,  // Show 3 slides on medium screens
+                    slidesToShow: 2,  // Show 3 slides on medium screens
                 },
             },
             {
@@ -374,22 +375,34 @@ function Home() {
         <>
             <div className="app-section">
                 <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
-                    <Link to={'/'} className="logo">
-                        <img src={Logo} alt="" />
-                    </Link>
-                    <div className="nav">
-                        {/* {walletAddress === adminAddress ? <button><Link style={{ textDecorationLine: 'none', color: 'white' }} to={'/all-blogs'}>Create Blog</Link></button> : ''} */}
-                        <button><Link style={{ textDecorationLine: 'none', color: 'white' }} to={'/all-blogs'}>Create Blog</Link></button>
-                        <button><Link style={{ textDecorationLine: 'none', color: 'white' }} to={'https://gittu-react-landing.vercel.app/assets/whitepaper-BtQddnnY.pdf'}>Whitepaper</Link></button>
+                    <div className="mm">
+                        <Link to={'/'} className="logo">
+                            <img src={Logo} alt="" />
+                        </Link>
                         {walletAddress ? (
-                            <button className="wallet-btn d-flex align-items-center" style={{ gap: '8px' }} onClick={() => setIsModalOpen(true)}>
+                            <button className="wallet-btn hid2 d-flex align-items-center" style={{ gap: '8px' }} onClick={() => setIsModalOpen(true)}>
                                 {walletAddress.slice(0, 7)}...{walletAddress.slice(-4)}
                                 <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 32 36" fill="none">
                                     <path d="M17.6142 26.3391C16.7214 27.218 15.2714 27.218 14.3785 26.3391L2.94996 15.0891C2.0571 14.2102 2.0571 12.7828 2.94996 11.9039C3.84282 11.025 5.29282 11.025 6.18568 11.9039L16 21.5648L25.8142 11.9109C26.7071 11.032 28.1571 11.032 29.05 11.9109C29.9428 12.7898 29.9428 14.2172 29.05 15.0961L17.6214 26.3461L17.6142 26.3391Z" fill="white" />
                                 </svg>
                             </button>
                         ) : (
-                            <button className="wallet-btn" onClick={() => setIsModalOpen(true)}>Connect Wallet</button>
+                            <button className="wallet-btn hid2" onClick={() => setIsModalOpen(true)}>Connect Wallet</button>
+                        )}
+                    </div>
+                    <div className="nav">
+                        {/* {walletAddress === adminAddress ? <button><Link style={{ textDecorationLine: 'none', color: 'white' }} to={'/all-blogs'}>Create Blog</Link></button> : ''} */}
+                        <button><Link style={{ textDecorationLine: 'none', color: 'white' }} to={'/all-blogs'}>Create Blog</Link></button>
+                        <button><Link style={{ textDecorationLine: 'none', color: 'white' }} to={'https://gittu-react-landing.vercel.app/assets/whitepaper-BtQddnnY.pdf'}>Whitepaper</Link></button>
+                        {walletAddress ? (
+                            <button className="wallet-btn hid1 d-flex align-items-center" style={{ gap: '8px' }} onClick={() => setIsModalOpen(true)}>
+                                {walletAddress.slice(0, 7)}...{walletAddress.slice(-4)}
+                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 32 36" fill="none">
+                                    <path d="M17.6142 26.3391C16.7214 27.218 15.2714 27.218 14.3785 26.3391L2.94996 15.0891C2.0571 14.2102 2.0571 12.7828 2.94996 11.9039C3.84282 11.025 5.29282 11.025 6.18568 11.9039L16 21.5648L25.8142 11.9109C26.7071 11.032 28.1571 11.032 29.05 11.9109C29.9428 12.7898 29.9428 14.2172 29.05 15.0961L17.6214 26.3461L17.6142 26.3391Z" fill="white" />
+                                </svg>
+                            </button>
+                        ) : (
+                            <button className="wallet-btn hid1" onClick={() => setIsModalOpen(true)}>Connect Wallet</button>
                         )}
                     </div>
                 </header>
@@ -555,7 +568,7 @@ function Home() {
                 <div className="container">
                     <div className="roadmap-header w-100 text-center" style={{ marginBottom: '65px' }}>
                         <h2 className="map-head" style={{ color: '#0094ff', fontSize: '17px' }}>How it works</h2>
-                        <h1 className="map-main-head text-center" style={{ fontSize: '52px' }}>Simple Steps to Cashback <br /> Rewards
+                        <h1 className="map-main-head text-center" >Simple Steps to Cashback <br /> Rewards
                         </h1>
                     </div>
                     <div className="container-affli">
@@ -591,7 +604,7 @@ function Home() {
             <div className="refferal-section">
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-6 col-12 pt-4">
+                        <div className="col-lg-6 col-12 pt-4">
                             <div className="referral-section w-100" style={{ marginTop: '80px', paddingLeft: '140px' }}>
                                 <h2 style={{ fontSize: '25px' }}>Share Your Referral Link</h2>
                                 <p className="mt-4" style={{ color: '#c1cade', fontSize: '14px', paddingRight: '130px' }}>Copy and share your referral link to start earning rewards. The more people you refer, the more you earn!</p>
@@ -606,8 +619,8 @@ function Home() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-6 col-12">
-                            <img src={referal_img} style={{ width: '500px', height: '400px', marginLeft: '20px' }} alt="referal=img" />
+                        <div className="col-lg-6 col-12">
+                            <img className="refi" src={referal_img} style={{ width: '500px', height: '400px', marginLeft: '20px' }} alt="referal=img" />
                         </div>
                     </div>
                 </div>
@@ -651,29 +664,29 @@ function Home() {
                         <h2 className="map-head">Our Special Way</h2>
                         <h1 className="map-main-head">Crypterium Road Map</h1>
                     </div>
-                        <div className="timeline w-100" style={{ marginTop: '110px' }}>
-                            <div className="d-flex align-items-center mb-2" style={{ gap: '100px' }}>
-                                <div className="label">June 2017</div>
-                                <div className="label" style={{ marginLeft: '9px' }}>July 2017</div>
-                                <div className="label">December 2017</div>
-                                <div className="label" style={{ marginLeft: '-25px' }}>December 2017</div>
-                                <div className="label" style={{ marginLeft: '-18px' }}>January 2018</div>
-                                <div className="label" style={{ marginLeft: '-5px' }}>January 2018</div>
-                                <div className="label" style={{ marginLeft: '-0px' }}>April 2018</div>
-                            </div>
-
-                            <img style={{ marginBottom: '-34px', width: '100%' }} src={map_bar} alt="" />
-
-                            <div className="d-flex align-items-center mb-2" style={{ gap: '100px' }}>
-                                <div className="label" style={{ marginLeft: '-25px', width: '100px', fontSize: '15px', fontWeight: '500' }}>Stats Center Beta</div>
-                                <div className="label" style={{ marginLeft: '-30px', width: '100px', fontSize: '15px', fontWeight: '500' }}>BI Intergration</div>
-                                <div className="label" style={{ marginLeft: '-24px', width: '100px', fontSize: '15px', fontWeight: '500' }}>Fantasy Prototype</div>
-                                <div className="label" style={{ marginLeft: '-26px', width: '100px', fontSize: '15px', fontWeight: '500' }}>Tokens Crowdsale</div>
-                                <div className="label" style={{ marginLeft: '-24px', width: '100px', fontSize: '15px', fontWeight: '500' }}>Blogging Platform</div>
-                                <div className="label" style={{ marginLeft: '-25px', width: '100px', fontSize: '15px', fontWeight: '500' }}>Blogging Platform</div>
-                                <div className="label" style={{ marginLeft: '-22px', width: '100px', fontSize: '14px', fontWeight: '500' }}>Fantasy Sports with SCR</div>
-                            </div>
+                    <div className="timeline" style={{ marginTop: '110px' }}>
+                        <div className="d-flex align-items-center mb-2" style={{ gap: '100px' }}>
+                            <div className="label">June 2017</div>
+                            <div className="label" style={{ marginLeft: '9px' }}>July 2017</div>
+                            <div className="label">December 2017</div>
+                            <div className="label" style={{ marginLeft: '-25px' }}>December 2017</div>
+                            <div className="label" style={{ marginLeft: '-18px' }}>January 2018</div>
+                            <div className="label" style={{ marginLeft: '-5px' }}>January 2018</div>
+                            <div className="label" style={{ marginLeft: '-0px' }}>April 2018</div>
                         </div>
+
+                        <img style={{ marginBottom: '-34px' }} src={map_bar} alt="" />
+
+                        <div className="d-flex align-items-center mb-2" style={{ gap: '100px' }}>
+                            <div className="label" style={{ marginLeft: '-25px', width: '100px', fontSize: '15px', fontWeight: '500' }}>Stats Center Beta</div>
+                            <div className="label" style={{ marginLeft: '-30px', width: '100px', fontSize: '15px', fontWeight: '500' }}>BI Intergration</div>
+                            <div className="label" style={{ marginLeft: '-24px', width: '100px', fontSize: '15px', fontWeight: '500' }}>Fantasy Prototype</div>
+                            <div className="label" style={{ marginLeft: '-26px', width: '100px', fontSize: '15px', fontWeight: '500' }}>Tokens Crowdsale</div>
+                            <div className="label" style={{ marginLeft: '-24px', width: '100px', fontSize: '15px', fontWeight: '500' }}>Blogging Platform</div>
+                            <div className="label" style={{ marginLeft: '-25px', width: '100px', fontSize: '15px', fontWeight: '500' }}>Blogging Platform</div>
+                            <div className="label" style={{ marginLeft: '-22px', width: '100px', fontSize: '14px', fontWeight: '500' }}>Fantasy Sports with SCR</div>
+                        </div>
+                    </div>
                 </div>
             </div >
             <div className="token-distribution-container">
@@ -705,9 +718,9 @@ function Home() {
                             </div>
                             <div className="post-info">
                                 <h3>{post.subHeading}</h3>
-                                <h4>{post.title}</h4>
-                                <p>{post.description}</p>
-                                <small>{post.date}</small>
+                                <h4 style={{ color: '#000' }}>{post.title}</h4>
+                                <p style={{ color: '#000' }}>{post.description}</p>
+                                <small style={{ color: '#000' }}>{post.date}</small>
                             </div>
                         </div>
                     ))}
@@ -715,7 +728,7 @@ function Home() {
                     <div className="spinner" ></div>
                 </div>}
             </div>
-            <div className="faq-container text-center">
+            <div className="faq-container text-center container">
                 <div className="heading" style={{ margin: '0px 0 60px 0' }}>
                     <h1 className="map-main-head" style={{ color: '#000' }}>Have any questions?</h1>
                 </div>

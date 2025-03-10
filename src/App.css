@@ -25,7 +25,7 @@ body {
 }
 
 .blog-header {
-  background-color: #0b0c121d !important;
+  background-color: #0B0C12 !important;
 }
 
 /* Header component styles */
@@ -619,7 +619,7 @@ body {
   .roadmap-container {
     max-width: calc(177.778vh) !important;
     padding: 30px 0 !important;
-    height: calc(56.25vw) !important;
+    height: 60vh !important;
   }
 
   .map-head {

@@ -168,7 +168,7 @@ function Home() {
     };
 
     const percentage = (saleProgress / totalSupply) * 100;
-    
+
 
     const handleCopyReferralLink = () => {
         navigator.clipboard.writeText(`gittu-ebon.vercel.app/referral?user=286254`);
@@ -592,22 +592,22 @@ function Home() {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-6 col-12 pt-4">
-                            <div className="referral-section w-100" style={{ marginTop: '80px',paddingLeft: '140px' }}>
-                                <h2 style={{fontSize: '25px'}}>Share Your Referral Link</h2>
-                                <p className="mt-4" style={{color: '#c1cade',fontSize: '14px',paddingRight: '130px'}}>Copy and share your referral link to start earning rewards. The more people you refer, the more you earn!</p>
-                                <div className="referral-link" style={{marginTop: '40px'}}>
+                            <div className="referral-section w-100" style={{ marginTop: '80px', paddingLeft: '140px' }}>
+                                <h2 style={{ fontSize: '25px' }}>Share Your Referral Link</h2>
+                                <p className="mt-4" style={{ color: '#c1cade', fontSize: '14px', paddingRight: '130px' }}>Copy and share your referral link to start earning rewards. The more people you refer, the more you earn!</p>
+                                <div className="referral-link" style={{ marginTop: '40px' }}>
                                     <input
-                                    style={{fontWeight: '600'}}
+                                        style={{ fontWeight: '600' }}
                                         type="text"
                                         value={`https://gittu-ebon.vercel.app/referral?user=286254`}
                                         readOnly
                                     />
-                                    <button  onClick={handleCopyReferralLink} style={{ background: '#030D43' }}>Copy</button>
+                                    <button onClick={handleCopyReferralLink} style={{ background: '#030D43' }}>Copy</button>
                                 </div>
                             </div>
                         </div>
                         <div className="col-md-6 col-12">
-                            <img src={referal_img} style={{ width: '500px', height: '400px',marginLeft: '20px' }} alt="referal=img" />
+                            <img src={referal_img} style={{ width: '500px', height: '400px', marginLeft: '20px' }} alt="referal=img" />
                         </div>
                     </div>
                 </div>
@@ -651,29 +651,31 @@ function Home() {
                         <h2 className="map-head">Our Special Way</h2>
                         <h1 className="map-main-head">Crypterium Road Map</h1>
                     </div>
-                    <div className="timeline" style={{ marginTop: '110px' }}>
-                        <div className="d-flex align-items-center mb-2" style={{ gap: '100px' }}>
-                            <div className="label">June 2017</div>
-                            <div className="label" style={{ marginLeft: '9px' }}>July 2017</div>
-                            <div className="label">December 2017</div>
-                            <div className="label" style={{ marginLeft: '-25px' }}>December 2017</div>
-                            <div className="label" style={{ marginLeft: '-18px' }}>January 2018</div>
-                            <div className="label" style={{ marginLeft: '-5px' }}>January 2018</div>
-                            <div className="label" style={{ marginLeft: '-0px' }}>April 2018</div>
+                        <div className="timeline w-100" style={{ marginTop: '110px' }}>
+                            <div className="d-flex align-items-center mb-2" style={{ gap: '100px' }}>
+                                <div className="label">June 2017</div>
+                                <div className="label" style={{ marginLeft: '9px' }}>July 2017</div>
+                                <div className="label">December 2017</div>
+                                <div className="label" style={{ marginLeft: '-25px' }}>December 2017</div>
+                                <div className="label" style={{ marginLeft: '-18px' }}>January 2018</div>
+                                <div className="label" style={{ marginLeft: '-5px' }}>January 2018</div>
+                                <div className="label" style={{ marginLeft: '-0px' }}>April 2018</div>
+                            </div>
+
+                            <img style={{ marginBottom: '-34px', width: '100%' }} src={map_bar} alt="" />
+
+                            <div className="d-flex align-items-center mb-2" style={{ gap: '100px' }}>
+                                <div className="label" style={{ marginLeft: '-25px', width: '100px', fontSize: '15px', fontWeight: '500' }}>Stats Center Beta</div>
+                                <div className="label" style={{ marginLeft: '-30px', width: '100px', fontSize: '15px', fontWeight: '500' }}>BI Intergration</div>
+                                <div className="label" style={{ marginLeft: '-24px', width: '100px', fontSize: '15px', fontWeight: '500' }}>Fantasy Prototype</div>
+                                <div className="label" style={{ marginLeft: '-26px', width: '100px', fontSize: '15px', fontWeight: '500' }}>Tokens Crowdsale</div>
+                                <div className="label" style={{ marginLeft: '-24px', width: '100px', fontSize: '15px', fontWeight: '500' }}>Blogging Platform</div>
+                                <div className="label" style={{ marginLeft: '-25px', width: '100px', fontSize: '15px', fontWeight: '500' }}>Blogging Platform</div>
+                                <div className="label" style={{ marginLeft: '-22px', width: '100px', fontSize: '14px', fontWeight: '500' }}>Fantasy Sports with SCR</div>
+                            </div>
                         </div>
-                        <img style={{ marginBottom: '-34px' }} src={map_bar} alt="" />
-                        <div className="d-flex align-items-center mb-2" style={{ gap: '100px' }}>
-                            <div className="label" style={{ marginLeft: '-25px', width: '100px', fontSize: '15px', fontWeight: '500' }}>Stats Center Beta</div>
-                            <div className="label" style={{ marginLeft: '-30px', width: '100px', fontSize: '15px', fontWeight: '500' }}>BI Intergration</div>
-                            <div className="label" style={{ marginLeft: '-24px', width: '100px', fontSize: '15px', fontWeight: '500' }}>Fantasy Prototype</div>
-                            <div className="label" style={{ marginLeft: '-26px', width: '100px', fontSize: '15px', fontWeight: '500' }}>Tokens Crowdsale</div>
-                            <div className="label" style={{ marginLeft: '-24px', width: '100px', fontSize: '15px', fontWeight: '500' }}>Blogging Platform</div>
-                            <div className="label" style={{ marginLeft: '-25px', width: '100px', fontSize: '15px', fontWeight: '500' }}>Blogging Platform</div>
-                            <div className="label" style={{ marginLeft: '-22px', width: '100px', fontSize: '14px', fontWeight: '500' }}>Fantasy Sports with SCR</div>
-                        </div>
-                    </div>
                 </div>
-            </div>
+            </div >
             <div className="token-distribution-container">
                 <div className="heading">
                     <h2 className="map-head" style={{ color: '#000' }}>Our Data</h2>

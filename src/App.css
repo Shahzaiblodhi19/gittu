@@ -11,10 +11,11 @@ body {
 }
 
 .app-section {
+  padding-top: 35px;
   overflow: hidden;
   background-color: #0B0C12;
   height: 100%;
-  padding-bottom: 33.9px;
+  padding-bottom: 91.9px;
 }
 
 .container {
@@ -24,7 +25,7 @@ body {
 }
 
 .blog-header {
-  background-color: #0B0C12 !important;
+  background-color: #0b0c121d !important;
 }
 
 /* Header component styles */
@@ -46,7 +47,9 @@ body {
 
 /* Apply a black background when the user scrolls down */
 .header.scrolled {
-  background-color: #0B0C12;
+  padding: 45px 50px;
+  background-color: rgba(3,13,67,.376); /* Semi-transparent white */
+  backdrop-filter: blur(5px);
 }
 
 .header .nav button {
@@ -326,7 +329,10 @@ body {
   height: 50px;
   margin-left: 23px;
 }
-
+.refferal-section{
+  background-color: #030D43;
+  padding-bottom: 60px;
+}
 /* Modal Styles */
 .modals {
   background-color: #1A1B1F;
@@ -536,6 +542,7 @@ body {
   text-transform: uppercase;
   line-height: normal;
 }
+
 @media (max-width: 620px) {
   .container {
     padding: 0 35px;
@@ -614,10 +621,12 @@ body {
     padding: 30px 0 !important;
     height: calc(56.25vw) !important;
   }
-  .map-head{
+
+  .map-head {
     font-size: 10px !important;
   }
-  .map-main-head{
+
+  .map-main-head {
     font-size: 18px !important;
   }
 }
@@ -688,6 +697,80 @@ body {
     width: 40px !important;
     height: 40px !important;
     margin-bottom: 12px;
+  }
+}
+
+.container-afflit {
+  background-color: #030D43;
+  padding: 90px 140px 50px;
+}
+
+.container-affli {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  /* Two equal columns */
+  gap: 28px;
+  margin: 0 auto;
+}
+
+/* Left Section */
+.left {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.left .car {
+  width: 100%;
+  border: 1.5px solid rgba(0, 148, 255, .16);
+  background-color: transparent;
+  padding: 35px 35px 20px 35px;
+  align-items: flex-start;
+  gap: 20px;
+  border-radius: 30px;
+  display: flex !important;
+}
+
+.left h2 {
+  color: white;
+  font-size: 22px;
+  font-weight: 900;
+  margin-bottom: 18px;
+}
+
+.left p {
+  color: #c1cade;
+  font-size: 1em;
+  line-height: 1.6;
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+  .container-affli {
+    grid-template-columns: 1fr;
+    /* Single column layout on smaller screens */
+  }
+
+  .left,
+  .right {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .left h2,
+  .right h2 {
+    font-size: 1.4em;
+    /* Smaller heading for small screens */
+  }
+
+  .left p,
+  .right p {
+    font-size: 0.9em;
+    /* Smaller paragraph text */
   }
 }
 

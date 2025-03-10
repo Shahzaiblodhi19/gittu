@@ -13,6 +13,7 @@ import bg_part from '../assets/bg-part.svg';
 import head1 from '../assets/head-img.svg';
 import map_bar from '../assets/map-bar.svg';
 import head2 from '../assets/head-2.svg';
+import referal_img from "../assets/refferal-bg.svg";
 import Slider from 'react-slick';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
@@ -167,9 +168,10 @@ function Home() {
     };
 
     const percentage = (saleProgress / totalSupply) * 100;
+    
 
     const handleCopyReferralLink = () => {
-        navigator.clipboard.writeText(`https://your-website.com/referral?user=12345`);
+        navigator.clipboard.writeText(`gittu-ebon.vercel.app/referral?user=286254`);
         alert("Referral link copied to clipboard!");
     };
 
@@ -413,17 +415,7 @@ function Home() {
                                 </div>
                                 <p className="mt-4 text-white mm">1 GITTU = 0.001 USD <br />
                                     NEXT STAGE = 0.002 USD</p>
-                                <div className="referral-section">
-                                    <h2>Share Your Referral Link</h2>
-                                    <div className="referral-link">
-                                        <input
-                                            type="text"
-                                            value={`https://your-website.com/referral?user=12345`}
-                                            readOnly
-                                        />
-                                        <button onClick={handleCopyReferralLink}>Copy</button>
-                                    </div>
-                                </div>
+
                                 <button className="buy-now" onClick={handleBuyNow}>BUY NOW</button>
                             </div>
 
@@ -466,7 +458,8 @@ function Home() {
                                     <button className="w-auto close mt-0" onClick={() => setIsModalOpen(false)} style={{ padding: '11px', borderRadius: '50px' }}><svg aria-hidden="true" fill="none" height="10" viewBox="0 0 10 10" width="10" xmlns="http://www.w3.org/2000/svg"><title>Close</title><path d="M1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L3.58579 5L0.292893 8.29289C-0.0976311 8.68342 -0.0976311 9.31658 0.292893 9.70711C0.683417 10.0976 1.31658 10.0976 1.70711 9.70711L5 6.41421L8.29289 9.70711C8.68342 10.0976 9.31658 10.0976 9.70711 9.70711C10.0976 9.31658 10.0976 8.68342 9.70711 8.29289L6.41421 5L9.70711 1.70711C10.0976 1.31658 10.0976 0.683417 9.70711 0.292893C9.31658 -0.0976311 8.68342 -0.0976311 8.29289 0.292893L5 3.58579L1.70711 0.292893Z" fill="currentColor"></path></svg></button>
                                 </div>
                                 <div style={{
-                                    height: '380px',
+                                    maxHeight: '380px',
+                                    height: 'auto',
                                     overflowY: 'auto',
                                     width: '100%',
                                     scrollbarWidth: 'none',  /* For Firefox */
@@ -556,6 +549,67 @@ function Home() {
                         )}
 
                     </ReactModal>
+                </div>
+            </div>
+            <div className="container-afflit">
+                <div className="container">
+                    <div className="roadmap-header w-100 text-center" style={{ marginBottom: '65px' }}>
+                        <h2 className="map-head" style={{ color: '#0094ff', fontSize: '17px' }}>How it works</h2>
+                        <h1 className="map-main-head text-center" style={{ fontSize: '52px' }}>Simple Steps to Cashback <br /> Rewards
+                        </h1>
+                    </div>
+                    <div className="container-affli">
+                        <div className="left">
+                            <div className="car d-flex">
+                                <img src="https://blockdag.network/icons/referral-link.svg" style={{ width: 'calc(min(1px, 0.06944vw)*48)' }} height={'auto'} alt="" />
+                                <div className="info">
+                                    <h2>1. Use your affiliate link to <br /> get started.</h2>
+                                    <p>Every user will receive a unique Affiliate code upon connecting their wallet.</p>
+                                </div>
+                            </div>
+                            <div className="car d-flex">
+                                <img src="https://blockdag.network/icons/affiliate-system.svg" style={{ width: 'calc(min(1px, 0.06944vw)*48)' }} height={'auto'} alt="" />
+                                <div className="info">
+                                    <h2>2. Affiliate Program Works For <br /> You Perfectly</h2>
+                                    <p>Share it with your friends and community!</p>
+                                </div>
+                            </div>
+                            <div className="car d-flex">
+                                <img src="https://blockdag.network/icons/tether.svg" style={{ width: 'calc(min(1px, 0.06944vw)*48)' }} height={'auto'} alt="" />
+                                <div className="info">
+                                    <h2>3. Start Earning USDT Immediately</h2>
+                                    <p>Earn USDT BEP-20 cashback for every <br /> purchase made by your links. You'll receive 5% <br /> cashback instantly!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="right">
+                            <img src="https://blockdag.network/images/referral-steps.webp" alt="image" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="refferal-section">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-6 col-12 pt-4">
+                            <div className="referral-section w-100" style={{ marginTop: '80px',paddingLeft: '140px' }}>
+                                <h2 style={{fontSize: '25px'}}>Share Your Referral Link</h2>
+                                <p className="mt-4" style={{color: '#c1cade',fontSize: '14px',paddingRight: '130px'}}>Copy and share your referral link to start earning rewards. The more people you refer, the more you earn!</p>
+                                <div className="referral-link" style={{marginTop: '40px'}}>
+                                    <input
+                                    style={{fontWeight: '600'}}
+                                        type="text"
+                                        value={`https://gittu-ebon.vercel.app/referral?user=286254`}
+                                        readOnly
+                                    />
+                                    <button  onClick={handleCopyReferralLink} style={{ background: '#030D43' }}>Copy</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-md-6 col-12">
+                            <img src={referal_img} style={{ width: '500px', height: '400px',marginLeft: '20px' }} alt="referal=img" />
+                        </div>
+                    </div>
                 </div>
             </div>
             <div className="video-container" style={{ position: 'relative' }}>

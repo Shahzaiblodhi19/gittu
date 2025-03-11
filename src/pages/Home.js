@@ -384,7 +384,7 @@ function Home() {
                             <img src={Logo} alt="" />
                         </Link>
                         {walletAddress ? (
-                            <button className="wallet-btn hid2 d-flex align-items-center" style={{ gap: '8px' }} onClick={() => setIsModalOpen(true)}>
+                            <button className="wallet-btn hid2  align-items-center" style={{ gap: '8px' }} onClick={() => setIsModalOpen(true)}>
                                 {walletAddress.slice(0, 7)}...{walletAddress.slice(-4)}
                                 <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 32 36" fill="none">
                                     <path d="M17.6142 26.3391C16.7214 27.218 15.2714 27.218 14.3785 26.3391L2.94996 15.0891C2.0571 14.2102 2.0571 12.7828 2.94996 11.9039C3.84282 11.025 5.29282 11.025 6.18568 11.9039L16 21.5648L25.8142 11.9109C26.7071 11.032 28.1571 11.032 29.05 11.9109C29.9428 12.7898 29.9428 14.2172 29.05 15.0961L17.6214 26.3461L17.6142 26.3391Z" fill="white" />
@@ -572,7 +572,7 @@ function Home() {
                 </div>
             </div>
             <div className="container-afflit">
-                <h2 className="h" style={{ color: '#fff',textAlign: 'center',marginTop: '-50px',marginBottom: '50px',fontSize: '34px' }}>Affiliate Program</h2>
+                <h2 className="h" style={{ color: '#fff',textAlign: 'center',marginBottom: '50px',fontSize: '34px' }}>Affiliate Program</h2>
                 <div className="container">
                     <div className="roadmap-header w-100 text-center" style={{ marginBottom: '65px' }}>
                         <h2 className="map-head" style={{ color: '#0094ff', fontSize: '17px' }}>How it works</h2>

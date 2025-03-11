@@ -1141,9 +1141,6 @@ canvas {
 }
 
 @media (max-width: 768px) {
-  .h{
-    margin-top: -60px !important;
-  }
   p.wid{font-size: 13px;}
   .slick-track {
     grid-template-columns: repeat(1, 1fr) !important;

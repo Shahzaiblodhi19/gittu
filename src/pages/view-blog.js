@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom"; // To get the blog id from the URL
 import Web3 from "web3";
 import ReactModal from "react-modal";
 import Logo from '../assets/logo.png';
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import { Link } from "react-router-dom";
-import { Container, Row, Col, Table, Button, InputGroup, FormControl } from "react-bootstrap";
 
 ReactModal.setAppElement("#root");
 
-function Blogs() {
+const ViewBlog = () => {
+
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalStage, setModalStage] = useState("select"); // ["select", "opening", "connecting", "connected"]
     const [selectedWallet, setSelectedWallet] = useState(null);
@@ -115,65 +116,47 @@ function Blogs() {
         };
     }, []);
 
+    const { id } = useParams(); // Get the blog ID from the URL params
+    const [blog, setBlog] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-    const [blogs, setBlogs] = useState([]);
-    const [searchTerm, setSearchTerm] = useState("");
-    const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage, setPostsPerPage] = useState(3);
-
-    // Sample blog data (You can replace it with API data)
+    // Fetch the blog data when the component mounts
     useEffect(() => {
-        const fetchBlogs = async () => {
+        const fetchBlogData = async () => {
             try {
-                const response = await fetch("https://node-server-beryl.vercel.app/api/blogs");
-                const data = await response.json();
-                setBlogs(data);  // Set the fetched blogs into state
-            } catch (error) {
-                console.error("Error fetching blogs:", error);
+                // Fetch the blog post from the API
+                const response = await fetch(`https://node-server-beryl.vercel.app/api/blogs/${id}`);
+                if (!response.ok) {
+                    throw new Error("Failed to fetch blog data");
+                }
+                const blogData = await response.json();
+                setBlog(blogData);
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setIsLoading(false); // Set loading state to false once fetch is done
             }
         };
 
-        fetchBlogs();  // Call the function to fetch blogs
-    }, []);
+        fetchBlogData();
+    }, [id]);
 
-    // Search filtering
-    const filteredBlogs = blogs.filter((blog) =>
-        blog.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    if (isLoading) {
+        return <div className="loader m-auto" style={{ position: 'absolute', top: '45%', left: '50%' }}>
+            <div className="spinner" style={{ color: '#000' }}></div>
+        </div>; // Show loading state while data is being fetched
+    }
 
-    // Pagination logic
-    const indexOfLastPost = currentPage * postsPerPage;
-    const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    const currentPosts = filteredBlogs.slice(indexOfFirstPost, indexOfLastPost);
+    if (error) {
+        return <div className="loader m-auto" style={{ position: 'absolute', top: '45%', left: '50%' }}>
+            <div className="spinner" style={{ color: '#000' }}></div>
+        </div>; // Show error message if there's an issue fetching data
+    }
 
-    // Change page
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-    // Handle search input change
-    const handleSearchChange = (e) => setSearchTerm(e.target.value);
-
-    const totalPages = Math.ceil(filteredBlogs.length / postsPerPage);
-    const handleDeleteBlog = async (id) => {
-        try {
-            // Send DELETE request to backend API
-            const response = await fetch(`https://node-server-beryl.vercel.app/api/blogs/${id}`, {
-                method: "DELETE",
-            });
-
-            if (response.ok) {
-                // If deletion is successful, remove the blog from the state
-                setBlogs(blogs.filter(blog => blog._id !== id));
-            } else {
-                const data = await response.json();
-                alert(data.message || 'Failed to delete blog');
-            }
-        } catch (error) {
-            console.error("Error deleting blog:", error);
-            alert("Failed to delete blog");
-        }
-    };
-
-    const adminAddress = '3CLc2511wqVpJVwN5g2s5ZEcGK5ZwymKJvrHABcC5Ewe';
+    if (!blog) {
+        return <div>Blog not found.</div>; // Show a message if the blog is not found
+    }
 
     return (
         <>
@@ -314,112 +297,23 @@ function Blogs() {
 
             </ReactModal>
 
-            <Container className="con" style={{ marginTop: '140px' }}>
-                <Row className="my-4">
-                    <Col>
-                        <div className="d-flex align-items-center justify-content-between mb-5 m">
-                            <h1>Blogs</h1>
-                            <div className="d-flex align-items-center " style={{ gap: '15px' }}>
-                                <InputGroup>
-                                    <svg className="search-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" fill="none">
-                                        <path d="M20.6666 18.6667H19.6133L19.24 18.3067C20.0732 17.3386 20.6822 16.1984 21.0234 14.9675C21.3645 13.7366 21.4294 12.4455 21.2133 11.1867C20.5866 7.48 17.4933 4.52 13.76 4.06666C12.4475 3.90062 11.1144 4.03703 9.86267 4.46545C8.61098 4.89387 7.47389 5.60296 6.53841 6.53844C5.60292 7.47392 4.89384 8.61101 4.46542 9.8627C4.037 11.1144 3.90059 12.4475 4.06663 13.76C4.51997 17.4933 7.47997 20.5867 11.1866 21.2133C12.4455 21.4294 13.7366 21.3645 14.9675 21.0234C16.1983 20.6823 17.3386 20.0733 18.3066 19.24L18.6666 19.6133V20.6667L24.3333 26.3333C24.88 26.88 25.7733 26.88 26.32 26.3333C26.8666 25.7867 26.8666 24.8933 26.32 24.3467L20.6666 18.6667ZM12.6666 18.6667C9.34663 18.6667 6.66663 15.9867 6.66663 12.6667C6.66663 9.34666 9.34663 6.66666 12.6666 6.66666C15.9866 6.66666 18.6666 9.34666 18.6666 12.6667C18.6666 15.9867 15.9866 18.6667 12.6666 18.6667Z" fill="#8B8B8B" />
-                                    </svg>
-                                    <FormControl
-                                        placeholder="Search blogs..."
-                                        className="search"
-                                        value={searchTerm}
-                                        onChange={handleSearchChange}
-                                    />
-                                </InputGroup>
-                                <button className="blog-btn"><Link to={'/create-edit-blog'} style={{ color: 'white', textDecoration: 'none' }}>Add New Blog</Link></button>
-                            </div>
-                        </div>
-                        <div className="table-wrap" style={{ overflowX: 'auto', maxWidth: '100%' }}>
-                            <table className="m-auto mb-4 w-100" style={{ minWidth: '1000px' }}>
-                                <thead>
-                                    <tr>
-                                        <th>Image</th>
-                                        <th>Title</th>
-                                        <th>Sub-heading</th>
-                                        <th>Date</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody className="position-relative" style={{ height: currentPosts.length !== 0 ? 'auto' : '100px' }}>
-                                    {currentPosts.length !== 0 ? currentPosts.map((blog) => (
-                                        <tr key={blog._id}>
-                                            <td><img src={!blog.image ? blog.image : `https://node-server-beryl.vercel.app/uploads/${blog.image}`} alt={blog.title} /></td> {/* Image column */}
-                                            <td className="d-flex align-items-start flex-column mt-2 table-cell" style={{ gap: '5px', marginLeft: '-170px' }}>
-                                                <div>{blog.title}</div>
-                                                <div className="paras">{blog.description.slice(0, 52) + ' ...'}</div>
-                                            </td>
-                                            <td>{blog.subHeading}</td>
-                                            <td>{blog.date}</td>
-                                            <td>
-                                                <Link to={`/edit-blog/${blog._id}`}>
-                                                    <svg className="me-2 edit-ico" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 28 28" fill="none">
-                                                        <path d="M3.5 24.5V19.5417L18.9 4.17083C19.1333 3.95694 19.3912 3.79167 19.6735 3.675C19.9558 3.55833 20.2522 3.5 20.5625 3.5C20.8728 3.5 21.1742 3.55833 21.4667 3.675C21.7591 3.79167 22.0119 3.96667 22.225 4.2L23.8292 5.83333C24.0625 6.04722 24.2328 6.3 24.3402 6.59167C24.4475 6.88333 24.5008 7.175 24.5 7.46667C24.5 7.77778 24.4467 8.0745 24.3402 8.35683C24.2336 8.63917 24.0633 8.89661 23.8292 9.12917L8.45833 24.5H3.5ZM20.5333 9.1L22.1667 7.46667L20.5333 5.83333L18.9 7.46667L20.5333 9.1Z" fill="black" />
-                                                    </svg>
-                                                </Link>
-                                                <svg onClick={() => handleDeleteBlog(blog._id)} className="delete-ico" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 27 27" fill="none">
-                                                    <path d="M6.75 21.375C6.75 22.6125 7.7625 23.625 9 23.625H18C19.2375 23.625 20.25 22.6125 20.25 21.375V10.125C20.25 8.8875 19.2375 7.875 18 7.875H9C7.7625 7.875 6.75 8.8875 6.75 10.125V21.375ZM20.25 4.5H17.4375L16.6388 3.70125C16.4362 3.49875 16.1438 3.375 15.8512 3.375H11.1487C10.8562 3.375 10.5638 3.49875 10.3612 3.70125L9.5625 4.5H6.75C6.13125 4.5 5.625 5.00625 5.625 5.625C5.625 6.24375 6.13125 6.75 6.75 6.75H20.25C20.8687 6.75 21.375 6.24375 21.375 5.625C21.375 5.00625 20.8687 4.5 20.25 4.5Z" fill="black" />
-                                                </svg>
-                                            </td>
-                                        </tr>
-                                    )) : <div className="loader m-auto" style={{ position: 'absolute', top: '45%', left: '50%' }}>
-                                        <div className="spinner" style={{ color: '#000' }}></div>
-                                    </div>}
-                                </tbody>
-                            </table>
-                        </div>
-                        <div className="d-flex align-items-center justify-content-between m n" >
-                            <span>Showing {indexOfFirstPost + 1} to {indexOfLastPost} of {filteredBlogs.length} blogs</span>
-                            <div className="d-flex align-items-center" style={{ gap: '15px' }}>
-                                <select
-                                    className="form-select"
-                                    value={postsPerPage}
-                                    onChange={(e) => setPostsPerPage(Number(e.target.value))}
-                                >
-                                    <option value={3}>3</option>
-                                    <option value={5}>5</option>
-                                    <option value={10}>10</option>
-                                </select>
-                                <div className="pagination w-100">
-                                    <button
-                                        variant="secondary"
-                                        className="btn-pag"
-                                        onClick={() => paginate(currentPage - 1)}
-                                        disabled={currentPage === 1}
-                                    >
-                                        Previous
-                                    </button>
-                                    {/* Page number buttons */}
-                                    <div style={{ display: "inline-flex", margin: "0 10px" }}>
-                                        {Array.from({ length: totalPages }, (_, index) => (
-                                            <button
-                                                key={index + 1}
-                                                variant="light"
-                                                onClick={() => paginate(index + 1)}
-                                                className={`nmb ${currentPage === index + 1 ? 'active' : ''}`}
-                                            >
-                                                {index + 1}
-                                            </button>
-                                        ))}
-                                    </div>
-                                    <button
-                                        className="btn-pag"
-                                        variant="secondary"
-                                        onClick={() => paginate(currentPage + 1)}
-                                        disabled={currentPage === totalPages}
-                                    >
-                                        Next
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </Col>
-                </Row>
-            </Container>
+            <div className="blog-post-container container" style={{ marginTop: '130px' }}>
+                <div className="back-button mb-5">
+                    <Link to={"/"} style={{ color: '#000', textDecoration: 'none', fontWeight: '500' }}><svg xmlns="http://www.w3.org/2000/svg" className="mb-1" width="18" height="14" viewBox="0 0 36 32" fill="none">
+                        <path d="M9.66089 17.6143C8.78198 16.7214 8.78198 15.2714 9.66089 14.3786L20.9109 2.95C21.7898 2.05714 23.2171 2.05714 24.096 2.95C24.975 3.84286 24.975 5.29286 24.096 6.18571L14.4351 16L24.089 25.8143C24.9679 26.7071 24.9679 28.1571 24.089 29.05C23.2101 29.9429 21.7828 29.9429 20.9039 29.05L9.65386 17.6214L9.66089 17.6143Z" fill="black" />
+                    </svg> Back To Homepage</Link>
+                </div>
+                <div className="blog-content" >
+                    <p className="mb-2" style={{ color: '#16BF86', fontSize: '16px' }}>{blog.subHeading}</p>
+                    <h1 className="mb-4" style={{ fontSize: '32px' }}>{blog.title}</h1>
+                    <div className="wid" style={{ height: 'auto', width: '80%' }}>
+                        <img style={{ width: '100%', height: '100%', borderRadius: '10px' }} src={`https://node-server-beryl.vercel.app/uploads/${blog.image}`} alt={blog.title} className="blog-image mt-2" />
+                    </div>
+                    <p className="mt-4"><strong>{blog.date}</strong></p>
+                    <p className="wid" style={{ width: '90%' }}>{blog.description}</p>
+                </div>
+            </div>
+
             <footer className="footer mt-5">
                 <div className="container">
                     <div className="footer-content">
@@ -469,7 +363,7 @@ function Blogs() {
                 </div>
             </footer>
         </>
-    )
-}
+    );
+};
 
-export default Blogs
+export default ViewBlog;

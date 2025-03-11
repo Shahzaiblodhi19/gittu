@@ -259,30 +259,34 @@ function Home() {
 
         fetchBlogs();  // Call the function to fetch blogs
     }, []);
-
     const settings = {
-        infinite: true,  // Loop through the slides infinitely
-        speed: 500,      // Transition speed between slides
-        slidesToShow: 4, // Number of slides visible at once
-        slidesToScroll: 1, // Number of slides to scroll at a time
-        dots: false,      // Enable dots for navigation
-        autoplay: true,  // Enable auto-play
-        autoplaySpeed: 2000,      // Enable dots for navigation
+        infinite: blogPosts.length > 4,
+        speed: 500,
+        slidesToShow: 4, // Show available slides
+        slidesToScroll: 1, // Scroll one slide at a time
+        dots: true, // Enable dots for navigation
+        autoplay: true, // Enable auto-play
+        autoplaySpeed: 2000, // Speed for auto-play
+        centerMode: false, // Ensure slides start from the left
         responsive: [
             {
-                breakpoint: 1024,  // Medium devices (like tablets)
+                breakpoint: 1024, // Medium devices (like tablets)
                 settings: {
-                    slidesToShow: 2,  // Show 3 slides on medium screens
+                    slidesToShow: 2, // Show 2 slides on medium screens
+                    slidesToScroll: 1,
                 },
             },
             {
-                breakpoint: 600,   // Small devices (like mobile)
+                breakpoint: 600, // Small devices (like mobile)
                 settings: {
-                    slidesToShow: 1,  // Show 1 slide on small screens
+                    slidesToShow: 1, // Show 1 slide on small screens
+                    slidesToScroll: 1,
                 },
             },
         ],
     };
+
+
     const [activeIndex, setActiveIndex] = useState(1);
 
     const faqData = [
@@ -439,6 +443,9 @@ function Home() {
                         <div className="col-xl-5 col-12">
                             <div className="right-sec ">
                                 <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+                                    <div className="overlay-img">
+                                        <img src="data:image/svg+xml,%3csvg%20width='106'%20height='129'%20viewBox='0%200%20106%20129'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20clip-path='url(%23clip0_2_1188)'%3e%3cpath%20d='M106%2087.865C106%20100.466%20102.25%20109.922%2095.9538%20115.533C93.9708%20117.302%2082.073%20125.589%2079.624%20126.572C71.3489%20129.895%2070.2853%20121.721%2058.5655%20115.013C32.3674%20100.021%2011.1309%2063.557%2011.1309%2033.57C11.1309%2022.1322%203.49564%2020.4352%208.77086%2014.7016C10.1437%2013.2104%2022.3932%204.7843%2024.0457%203.72159C32.6936%20-1.8314%2044.9601%20-1.36515%2058.5655%206.42248C84.7636%2021.4139%20106%2057.878%20106%2087.865Z'%20fill='url(%23paint0_linear_2_1188)'/%3e%3cpath%20d='M94.8649%2095.43C94.8649%20125.417%2073.6284%20137.573%2047.4303%20122.578C21.2322%20107.582%200%2071.1178%200%2041.1308C0%2011.1438%2021.2364%20-1.00811%2047.4345%2013.9833C73.6284%2028.9789%2094.8649%2065.443%2094.8649%2095.43Z'%20fill='url(%23paint1_linear_2_1188)'/%3e%3cpath%20d='M76.9509%20119.128C93.3333%20109.751%2093.3338%2079.3473%2076.9519%2051.2195C60.5701%2023.0917%2034.0094%207.89102%2017.627%2017.2678C1.24456%2026.6446%201.2441%2057.0481%2017.6259%2085.1759C34.0078%20113.304%2060.5685%20128.504%2076.9509%20119.128Z'%20stroke='%2384E4A4'%20stroke-width='0.6873'%20stroke-miterlimit='10'/%3e%3c/g%3e%3cdefs%3e%3clinearGradient%20id='paint0_linear_2_1188'%20x1='166.254'%20y1='28.7716'%20x2='55.8176'%20y2='64.1084'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0.0873'%20stop-color='%2384E4A4'/%3e%3cstop%20offset='0.9709'%20stop-color='%233C53D7'/%3e%3c/linearGradient%3e%3clinearGradient%20id='paint1_linear_2_1188'%20x1='45.5899'%20y1='22.1576'%20x2='3.18783'%20y2='106.806'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0.0873'%20stop-color='%2384E4A4'/%3e%3cstop%20offset='0.9709'%20stop-color='%233C53D7'/%3e%3c/linearGradient%3e%3cclipPath%20id='clip0_2_1188'%3e%3crect%20width='106'%20height='129'%20fill='white'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e" alt="coin" />
+                                    </div>
                                     <div className="bg-blur-right">
                                         <div className="countdown">
                                             <h2>Pre-Sale ends in</h2>
@@ -470,7 +477,7 @@ function Home() {
                                     <h2 className="wal-head">CONNECT A WALLET</h2>
                                     <button className="w-auto close mt-0" onClick={() => setIsModalOpen(false)} style={{ padding: '11px', borderRadius: '50px' }}><svg aria-hidden="true" fill="none" height="10" viewBox="0 0 10 10" width="10" xmlns="http://www.w3.org/2000/svg"><title>Close</title><path d="M1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L3.58579 5L0.292893 8.29289C-0.0976311 8.68342 -0.0976311 9.31658 0.292893 9.70711C0.683417 10.0976 1.31658 10.0976 1.70711 9.70711L5 6.41421L8.29289 9.70711C8.68342 10.0976 9.31658 10.0976 9.70711 9.70711C10.0976 9.31658 10.0976 8.68342 9.70711 8.29289L6.41421 5L9.70711 1.70711C10.0976 1.31658 10.0976 0.683417 9.70711 0.292893C9.31658 -0.0976311 8.68342 -0.0976311 8.29289 0.292893L5 3.58579L1.70711 0.292893Z" fill="currentColor"></path></svg></button>
                                 </div>
-                                <div style={{
+                                <div className="bn" style={{
                                     maxHeight: '380px',
                                     height: 'auto',
                                     overflowY: 'auto',
@@ -706,11 +713,11 @@ function Home() {
                 </div>
 
             </div>
-            <div className="slider-container container">
+            <div className="slider-container container" style={{position: 'relative',height: '100vh'}}>
                 <div className="heading" style={{ margin: '50px 0 80px 0' }}>
                     <h1 className="map-main-head" style={{ color: '#000' }}>Latest News & Blog</h1>
                 </div>
-                {blogPosts ? <Slider {...settings}>
+                {blogPosts.length !== 0 ? <Slider {...settings}>
                     {blogPosts.map((post, index) => (
                         <div key={index} className="slider-item">
                             <div className="image-w">
@@ -718,17 +725,17 @@ function Home() {
                             </div>
                             <div className="post-info">
                                 <h3>{post.subHeading}</h3>
-                                <h4 style={{ color: '#000' }}>{post.title}</h4>
-                                <p style={{ color: '#000' }}>{post.description}</p>
+                                <h4 style={{ color: '#000' }}><Link to={`/view-blog/${post._id}`} style={{color: 'inherit',textDecorationLine: 'none'}}>{post.title}</Link> </h4>
+                                <p style={{ color: '#000' }}>{post.description.slice(0, 110) + ' ...'}</p>
                                 <small style={{ color: '#000' }}>{post.date}</small>
                             </div>
                         </div>
                     ))}
                 </Slider> : <div className="loader m-auto" style={{ position: 'absolute', top: '45%', left: '50%' }}>
-                    <div className="spinner" ></div>
+                    <div className="spinner" style={{color: '#000'}}></div>
                 </div>}
             </div>
-            <div className="faq-container text-center container">
+            <div className="faq-container text-center container" style={{marginTop: '120px'}}>
                 <div className="heading" style={{ margin: '0px 0 60px 0' }}>
                     <h1 className="map-main-head" style={{ color: '#000' }}>Have any questions?</h1>
                 </div>

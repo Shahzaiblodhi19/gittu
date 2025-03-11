@@ -446,6 +446,55 @@ function CreateEditBlog() {
                     <button type="submit" className="create-blog-btn">Create Blog</button>
                 </form >
             </div >
+
+            <footer className="footer mt-5">
+                <div className="container">
+                    <div className="footer-content">
+                        <div className="footer-logo">
+                            <img src={Logo} alt="Logo" className="footer-logo-img" />
+                            <p>
+                                Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for ‘lorem ipsum’ will uncover many websites still in their infancy.
+                            </p>
+                        </div>
+                        <div className="footer-menu">
+                            <h3>Main menu</h3>
+                            <div className="d-flex align-items-center" style={{ gap: '60px' }}>
+                                <ul>
+                                    <li><a href="#home">Home</a></li>
+                                    <li><a href="#about">About Us</a></li>
+                                    <li><a href="#contacts">Contacts</a></li>
+                                    <li><a href="#news">News</a></li>
+                                </ul>
+                                <ul>
+                                    <li><a href="#events">Events</a></li>
+                                    <li><a href="#wallet">Wallet</a></li>
+                                    <li><a href="#faqs">FAQs</a></li>
+                                    <li><a href="#support">Support</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div className="footer-subscribe">
+                            <h3>Subscribe</h3>
+                            <div className="referral-link py-1" style={{ width: '357px', borderRadius: '50px' }}>
+                                <input
+                                    type="email"
+                                    placeholder="Email"
+                                    className="email-input"
+                                    style={{ borderRadius: '50px' }}
+                                />
+                                <button
+                                    style={{ borderRadius: '50px', fontSize: '17px' }}
+                                    className="py-2"
+                                >
+                                    Subscribe
+                                </button></div>
+                        </div>
+                    </div>
+                </div>
+                <div className="footer-bottom container">
+                    <p>© 2018, Gittu All rights reserved. | <a href="#privacy">Privacy Policy</a> | <a href="#sitemap">Sitemap</a></p>
+                </div>
+            </footer>
         </>
     )
 }

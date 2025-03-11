@@ -18,6 +18,12 @@ body {
   padding-bottom: 91.9px;
 }
 
+.slick-list {
+  max-width: 100%;
+  padding: 0 50px !important;
+  width: 100%;
+}
+
 .container {
   max-width: 100%;
   padding: 0 50px;
@@ -267,6 +273,13 @@ body {
 }
 
 @media (max-width: 1224px) {
+
+  .overlay-img {
+    height: 160px;
+    margin-top: 160px !important;
+    z-index: 100;
+  }
+
   .right-sec {
     margin-top: 70px;
     position: relative;
@@ -312,7 +325,8 @@ body {
   /* Your CSS styles go here */
   /* Example */
   .modals {
-    height: calc(100vh - 40px);
+    max-height: calc(100vh - 40px);
+    height: auto !important;
   }
 }
 
@@ -552,6 +566,19 @@ body {
   font-weight: 400;
   text-transform: uppercase;
   line-height: normal;
+}
+
+@media (max-width: 790px) {
+  .overlay-img {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 690px) {
+  .overlay-img {
+    margin-top: -50px !important;
+    width: 120px;
+  }
 }
 
 @media (max-width: 620px) {
@@ -831,10 +858,45 @@ body {
   width: 100%;
 }
 
+.overlay-img {
+  position: absolute;
+  top: 200px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay-img img {
+  animation: 10s ease-in-out 0s infinite normal none running coinAnimate;
+}
+
+@keyframes coinAnimate {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  20% {
+    transform: translateY(10px) rotate(0deg);
+  }
+
+  40% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  60% {
+    transform: translateY(0px) rotate(360deg);
+  }
+
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
 .timeline {
-  width: 80%;
+  width: 85%;
   margin: 60px auto 60px auto !important;
-  overflow-x: scroll !important;
+  overflow-x: auto !important;
 }
 
 @media (max-width: 480px) {
@@ -983,17 +1045,29 @@ canvas {
   /* 28.8px */
 }
 
+.post-info h4 {
+  transition: all 0.3s ease-in-out;
+}
+
+.post-info h4:hover {
+  color: #16BF86 !important;
+}
+
 /* Slider Container */
 .slider-container {
-  position: relative;
-  padding: 50px auto;
-  height: 100vh;
+  box-sizing: border-box;
+  padding: 50px 0;
+  height: auto;
   text-align: center;
+}
+
+.bn {
+  max-height: 380px !important;
+  height: auto !important;
 }
 
 /* Styling the slider */
 .slider {
-  position: relative;
   overflow: hidden;
 }
 
@@ -1034,14 +1108,43 @@ canvas {
 
 
 .slick-slide {
-  margin-right: 50px;
-  /* Adds gap between slides */
+  width: 100% !important;
+  max-width: 100%;
 }
 
 .slick-track {
-  display: flex;
-  height: 40vh;
-  /* Align items in a row */
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  align-items: center !important;
+  max-width: 100%;
+  overflow: hidden;
+  width: 100% !important;
+  margin: 0 !important;
+  gap: 20px !important;
+}
+
+@media (max-width: 1200px) {
+  .slick-track {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 10px !important;
+    /* 3 columns for medium screens (like tablets) */
+  }
+}
+
+@media (max-width: 1024px) {
+  .wid{width: 100% !important;}
+  .slick-track {
+    grid-template-columns: repeat(2, 1fr) !important;
+    /* 2 columns for smaller tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  p.wid{font-size: 13px;}
+  .slick-track {
+    grid-template-columns: repeat(1, 1fr) !important;
+    /* 1 column for mobile screens */
+  }
 }
 
 .slick-slide:last-child {
@@ -1087,44 +1190,6 @@ canvas {
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-}
-
-.slick-dots {
-  position: absolute;
-  bottom: 10px;
-  /* Position the dots slightly at the bottom */
-  width: 100%;
-  text-align: center;
-  padding: 0;
-  margin: 0;
-}
-
-.slick-dots li button:before {
-  font-size: 12px;
-  color: grey;
-  /* Default color for inactive dots */
-  opacity: 1;
-  transition: all 0.3s ease;
-}
-
-.slick-dots li.slick-active button:before {
-  color: #32CD32;
-  /* Active dot color (green) */
-  transform: scale(1.5);
-  /* Slightly bigger active dot */
-}
-
-/* Styling for the dot's button */
-.slick-dots li button {
-  background: transparent;
-  border: none;
-  outline: none;
-}
-
-/* Optionally, you can add hover effect */
-.slick-dots li button:hover:before {
-  color: #32CD32;
-  /* Green on hover */
 }
 
 .faq-container {
@@ -1377,6 +1442,7 @@ input {
 
 
 @media screen and (max-width: 620px) {
+
   .con {
     margin-top: 190px !important;
   }

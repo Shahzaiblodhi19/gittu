@@ -8,6 +8,7 @@ import Home from "./pages/Home"; // Import Home component
 import Blogs from "./pages/blogs";
 import CreateEditBlog from "./pages/createeditblog";
 import EditBlog from "./pages/editblog";
+import ViewBlog from "./pages/view-blog";
 
 const App = () => {
   const adminAddress = '3CLc2511wqVpJVwN5g2s5ZEcGK5ZwymKJvrHABcC5Ewe';
@@ -30,6 +31,8 @@ const App = () => {
         <Route path="/create-edit-blog" element={<CreateEditBlog />} />
         {/* {adminAddress === walletAddress ? <Route path="/edit-blog/:id" element={<EditBlog />} /> : ''} */}
         <Route path="/edit-blog/:id" element={<EditBlog />} />
+
+        <Route path="/view-blog/:id" element={<ViewBlog />} />
       </Routes>
     </Router>
   );

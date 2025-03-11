@@ -1501,7 +1501,11 @@ input {
     width: 100%;
   }
 
-  .header .nav button:first-child {
+  .nav {
+    gap: 20px;
+  }
+
+  .header .nav button {
     margin-left: 0 !important;
   }
 
@@ -1514,7 +1518,7 @@ input {
   .roadmap-container {
     height: auto !important;
   }
-
+.app-section .container{padding-top: 150px !important;}
   .footer-logo p {
     font-size: 12px;
   }

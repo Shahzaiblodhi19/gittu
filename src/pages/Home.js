@@ -571,30 +571,6 @@ function Home() {
                     </ReactModal>
                 </div>
             </div>
-            <div className="refferal-section">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-lg-6 col-12 pt-4">
-                            <div className="referral-section w-100" style={{ marginTop: '80px', paddingLeft: '140px' }}>
-                                <h2 style={{ fontSize: '25px' }}>Share Your Referral Link</h2>
-                                <p className="mt-4" style={{ color: '#c1cade', fontSize: '14px', paddingRight: '130px' }}>Copy and share your referral link to start earning rewards. The more people you refer, the more you earn!</p>
-                                <div className="referral-link" style={{ marginTop: '40px' }}>
-                                    <input
-                                        style={{ fontWeight: '600' }}
-                                        type="text"
-                                        value={`https://gittu-ebon.vercel.app/referral?user=286254`}
-                                        readOnly
-                                    />
-                                    <button onClick={handleCopyReferralLink} style={{ background: '#030D43' }}>Copy</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-6 col-12">
-                            <img className="refi" src={referal_img} style={{ width: '500px', height: '400px', marginLeft: '20px' }} alt="referal=img" />
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div className="video-container" style={{ position: 'relative' }}>
                 {!isVideoPlaying ? (
                     <div className="bg-image">
@@ -662,6 +638,30 @@ function Home() {
                         </div>
                         <div className="right">
                             <img src="https://blockdag.network/images/referral-steps.webp" alt="image" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="refferal-section">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-6 col-12 pt-4">
+                            <div className="referral-section w-100" style={{ marginTop: '80px', paddingLeft: '140px' }}>
+                                <h2 style={{ fontSize: '25px' }}>Share Your Referral Link</h2>
+                                <p className="mt-4" style={{ color: '#c1cade', fontSize: '14px', paddingRight: '130px' }}>Copy and share your referral link to start earning rewards. The more people you refer, the more you earn!</p>
+                                <div className="referral-link" style={{ marginTop: '40px' }}>
+                                    <input
+                                        style={{ fontWeight: '600' }}
+                                        type="text"
+                                        value={`https://gittu-ebon.vercel.app/referral?user=286254`}
+                                        readOnly
+                                    />
+                                    <button onClick={handleCopyReferralLink} style={{ background: '#030D43' }}>Copy</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-6 col-12">
+                            <img className="refi" src={referal_img} style={{ width: '500px', height: '400px', marginLeft: '20px' }} alt="referal=img" />
                         </div>
                     </div>
                 </div>

@@ -20,8 +20,8 @@ body {
 }
 
 .slick-list {
-  max-width: 100%;
-  padding: 0 50px !important;
+  max-width: 85%;
+  margin: auto !important;
   width: 100%;
 }
 
@@ -1107,51 +1107,52 @@ canvas {
 }
 
 
+.slick-track {
+  display: flex !important;
+  justify-content: flex-start !important;
+  /* Align the slides to the left */
+  flex-wrap: nowrap !important;
+  /* Prevent slides from wrapping */
+  gap: 20px !important;
+  width: 100% !important;
+  /* Control the spacing between the slides */
+}
 
 .slick-slide {
-  width: 100% !important;
-  max-width: 100%;
+  width: 350px !important;
+  /* 4 slides per row, considering gap */
+  /* Adjust width to show 4 slides with space */
+  flex: 0 0 auto !important;
+  /* Prevent stretching */
 }
 
-.slick-track {
-  display: grid !important;
-  grid-template-columns: repeat(4, 1fr) !important;
-  align-items: center !important;
-  max-width: 100%;
-  overflow: hidden;
-  width: 100% !important;
-  margin: 0 !important;
-  gap: 20px !important;
-}
-
-@media (max-width: 1200px) {
-  .slick-track {
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 10px !important;
-    /* 3 columns for medium screens (like tablets) */
-  }
-}
-
+/* Responsiveness for medium screens (1024px and below) */
 @media (max-width: 1024px) {
-  .wid{width: 100% !important;}
-  .slick-track {
-    grid-template-columns: repeat(2, 1fr) !important;
-    /* 2 columns for smaller tablets */
+  .slick-slide {
+    width: 350px !important;
+    /* 2 slides per row */
   }
 }
 
-@media (max-width: 768px) {
-  p.wid{font-size: 13px;}
-  .slick-track {
-    grid-template-columns: repeat(1, 1fr) !important;
-    /* 1 column for mobile screens */
+/* Responsiveness for small screens (600px and below) */
+@media (max-width: 600px) {
+  .slick-slide {
+    width: 350px !important;
+
+    /* 1 slide per row */
   }
 }
+
 
 .slick-slide:last-child {
   margin-right: 0;
   /* Prevents gap after the last slide */
 }
+
+.slick-list {
+  overflow: hidden;
+}
+
 
 .post-info h3 {
   color: #16BF86;

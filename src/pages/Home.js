@@ -262,10 +262,10 @@ function Home() {
     const settings = {
         infinite: blogPosts.length > 4,
         speed: 500,
-        slidesToShow: 4, // Show available slides
+        slidesToShow: 4, // Show 4 slides by default
         slidesToScroll: 1, // Scroll one slide at a time
-        dots: true, // Enable dots for navigation
-        autoplay: true, // Enable auto-play
+        dots: false, // Disable dots for navigation
+        autoplay: false, // Enable auto-play
         autoplaySpeed: 2000, // Speed for auto-play
         centerMode: false, // Ensure slides start from the left
         responsive: [
@@ -273,18 +273,19 @@ function Home() {
                 breakpoint: 1024, // Medium devices (like tablets)
                 settings: {
                     slidesToShow: 2, // Show 2 slides on medium screens
-                    slidesToScroll: 1,
+                    slidesToScroll: 1, // Scroll 1 slide at a time
                 },
             },
             {
                 breakpoint: 600, // Small devices (like mobile)
                 settings: {
                     slidesToShow: 1, // Show 1 slide on small screens
-                    slidesToScroll: 1,
+                    slidesToScroll: 1, // Scroll 1 slide at a time
                 },
             },
         ],
     };
+
 
 
     const [activeIndex, setActiveIndex] = useState(1);
@@ -714,7 +715,7 @@ function Home() {
                 </div>
 
             </div>
-            <div className="slider-container container" style={{ position: 'relative', height: 'auto' }}>
+            <div className="slider-container container" style={{ position: 'relative', height: blogPosts.length !== 0 ? 'auto' : '100vh' }}>
                 <div className="heading" style={{ margin: '50px 0 80px 0' }}>
                     <h1 className="map-main-head" style={{ color: '#000' }}>Latest News & Blog</h1>
                 </div>

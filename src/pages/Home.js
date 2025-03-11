@@ -572,6 +572,7 @@ function Home() {
                 </div>
             </div>
             <div className="container-afflit">
+                <h2 className="h" style={{ color: '#fff',textAlign: 'center',marginTop: '-50px',marginBottom: '50px',fontSize: '34px' }}>Affiliate Program</h2>
                 <div className="container">
                     <div className="roadmap-header w-100 text-center" style={{ marginBottom: '65px' }}>
                         <h2 className="map-head" style={{ color: '#0094ff', fontSize: '17px' }}>How it works</h2>
@@ -713,7 +714,7 @@ function Home() {
                 </div>
 
             </div>
-            <div className="slider-container container" style={{position: 'relative',height: '100vh'}}>
+            <div className="slider-container container" style={{ position: 'relative', height: '100vh' }}>
                 <div className="heading" style={{ margin: '50px 0 80px 0' }}>
                     <h1 className="map-main-head" style={{ color: '#000' }}>Latest News & Blog</h1>
                 </div>
@@ -725,17 +726,17 @@ function Home() {
                             </div>
                             <div className="post-info">
                                 <h3>{post.subHeading}</h3>
-                                <h4 style={{ color: '#000' }}><Link to={`/view-blog/${post._id}`} style={{color: 'inherit',textDecorationLine: 'none'}}>{post.title}</Link> </h4>
+                                <h4 style={{ color: '#000' }}><Link to={`/view-blog/${post._id}`} style={{ color: 'inherit', textDecorationLine: 'none' }}>{post.title}</Link> </h4>
                                 <p style={{ color: '#000' }}>{post.description.slice(0, 110) + ' ...'}</p>
                                 <small style={{ color: '#000' }}>{post.date}</small>
                             </div>
                         </div>
                     ))}
                 </Slider> : <div className="loader m-auto" style={{ position: 'absolute', top: '45%', left: '50%' }}>
-                    <div className="spinner" style={{color: '#000'}}></div>
+                    <div className="spinner" style={{ color: '#000' }}></div>
                 </div>}
             </div>
-            <div className="faq-container text-center container" style={{marginTop: '120px'}}>
+            <div className="faq-container text-center container" style={{ marginTop: '120px' }}>
                 <div className="heading" style={{ margin: '0px 0 60px 0' }}>
                     <h1 className="map-main-head" style={{ color: '#000' }}>Have any questions?</h1>
                 </div>

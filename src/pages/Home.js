@@ -714,7 +714,7 @@ function Home() {
                 </div>
 
             </div>
-            <div className="slider-container container" style={{ position: 'relative', height: '100vh' }}>
+            <div className="slider-container container" style={{ position: 'relative', height: 'auto' }}>
                 <div className="heading" style={{ margin: '50px 0 80px 0' }}>
                     <h1 className="map-main-head" style={{ color: '#000' }}>Latest News & Blog</h1>
                 </div>
@@ -736,7 +736,7 @@ function Home() {
                     <div className="spinner" style={{ color: '#000' }}></div>
                 </div>}
             </div>
-            <div className="faq-container text-center container" style={{ marginTop: '120px' }}>
+            <div className="faq-container text-center container">
                 <div className="heading" style={{ margin: '0px 0 60px 0' }}>
                     <h1 className="map-main-head" style={{ color: '#000' }}>Have any questions?</h1>
                 </div>

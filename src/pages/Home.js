@@ -6,6 +6,7 @@ import tel_ico from '../assets/tel-ico.svg';
 import dis_ico from '../assets/dis-ico.svg';
 import twi_ico from '../assets/twi-ico.svg';
 import o_ico from '../assets/o-ico.svg';
+import { Link as ScrollLink, animateScroll as scroll } from 'react-scroll';
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import i_ico from '../assets/i-ico.svg';
 import lin_ico from '../assets/lin-ico.svg';
@@ -398,7 +399,18 @@ function Home() {
                     <div className="nav">
                         {/* {walletAddress === adminAddress ? <button><Link style={{ textDecorationLine: 'none', color: 'white' }} to={'/all-blogs'}>Create Blog</Link></button> : ''} */}
                         <button><Link style={{ textDecorationLine: 'none', color: 'white' }} to={'/all-blogs'}>Create Blog</Link></button>
-                        <button><Link style={{ textDecorationLine: 'none', color: 'white' }} to={'https://gittu-react-landing.vercel.app/assets/whitepaper-BtQddnnY.pdf'}>Whitepaper</Link></button>
+                        <button><ScrollLink to="affiliate"
+                            smooth={true}  // Enable smooth scrolling
+                            duration={500} // Duration of the scroll (in ms)
+                            style={{ textDecorationLine: 'none', color: 'white' }}>Affiliate Program</ScrollLink></button>
+                        <button><ScrollLink to="token"
+                            smooth={true}  // Enable smooth scrolling
+                            duration={500} // Duration of the scroll (in ms)
+                            style={{ textDecorationLine: 'none', color: 'white' }}>Token Distribution</ScrollLink></button>
+                        <button><ScrollLink to="roadmap"
+                            smooth={true}  // Enable smooth scrolling
+                            duration={500} // Duration of the scroll (in ms)
+                            style={{ textDecorationLine: 'none', color: 'white' }}>Road Map</ScrollLink></button>
                         {walletAddress ? (
                             <button className="wallet-btn hid1 d-flex align-items-center" style={{ gap: '8px' }} onClick={() => setIsModalOpen(true)}>
                                 {walletAddress.slice(0, 7)}...{walletAddress.slice(-4)}
@@ -605,7 +617,7 @@ function Home() {
                     </div>
                 )}
             </div>
-            <div className="container-afflit">
+            <div className="container-afflit" id="affiliate">
                 <h2 className="h" style={{ color: '#fff', textAlign: 'center', marginBottom: '50px', fontSize: '34px' }}>Affiliate Program</h2>
                 <div className="container">
                     <div className="roadmap-header w-100 text-center" style={{ marginBottom: '65px' }}>
@@ -667,7 +679,7 @@ function Home() {
                     </div>
                 </div>
             </div>
-            <div className="roadmap-container" style={{ padding: '140px 0' }}>
+            <div className="roadmap-container" id="roadmap" style={{ padding: '140px 0' }}>
                 <div className="roadmap-content">
                     <div className="roadmap-header">
                         <h2 className="map-head">Our Special Way</h2>
@@ -698,7 +710,7 @@ function Home() {
                     </div>
                 </div>
             </div >
-            <div className="token-distribution-container">
+            <div className="token-distribution-container" id="token">
                 <div className="heading">
                     <h2 className="map-head" style={{ color: '#000' }}>Our Data</h2>
                     <h1 className="map-main-head" style={{ color: '#000' }}>Token Distribution</h1>

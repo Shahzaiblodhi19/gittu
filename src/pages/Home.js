@@ -10,6 +10,7 @@ import { Link as ScrollLink, animateScroll as scroll } from 'react-scroll';
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import i_ico from '../assets/i-ico.svg';
 import lin_ico from '../assets/lin-ico.svg';
+import { useLocation } from "react-router-dom";  // For getting the current path
 import bg_part from '../assets/bg-part.svg';
 import head1 from '../assets/head-img.svg';
 import map_bar from '../assets/map-bar.svg';
@@ -377,14 +378,32 @@ function Home() {
             setMessage('An error occurred while subscribing');
         }
     };
+    const location = useLocation();  // Hook to get current route
+
+    // Conditional check for the current route
+    const isOnHomePage = location.pathname === "/";  // Check if on / page
     return (
         <>
-            <div className="app-section">
+            <div className="app-section" id="main">
                 <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
                     <div className="mm">
-                        <Link to={'/'} className="logo">
-                            <img src={Logo} alt="" />
-                        </Link>
+                        {isOnHomePage ? (
+                            // If on the homepage ("/"), use ScrollLink for smooth scrolling
+                            <ScrollLink
+                                to="main"  // Scroll to the "main" section
+                                smooth={true}
+                                duration={500}
+                                className="logo"
+                                style={{ cursor: 'pointer' }}
+                            >
+                                <img src={Logo} alt="Logo" />
+                            </ScrollLink>
+                        ) : (
+                            // If not on the homepage, use RouterLink to navigate to the homepage
+                            <Link to="/" className="logo">
+                                <img src={Logo} alt="Logo" />
+                            </Link>
+                        )}
                         {walletAddress ? (
                             <button className="wallet-btn hid2  align-items-center" style={{ gap: '8px' }} onClick={() => setIsModalOpen(true)}>
                                 {walletAddress.slice(0, 7)}...{walletAddress.slice(-4)}
@@ -403,14 +422,14 @@ function Home() {
                             smooth={true}  // Enable smooth scrolling
                             duration={500} // Duration of the scroll (in ms)
                             style={{ textDecorationLine: 'none', color: 'white' }}>Affiliate Program</ScrollLink></button>
-                        <button><ScrollLink to="token"
-                            smooth={true}  // Enable smooth scrolling
-                            duration={500} // Duration of the scroll (in ms)
-                            style={{ textDecorationLine: 'none', color: 'white' }}>Token Distribution</ScrollLink></button>
                         <button><ScrollLink to="roadmap"
                             smooth={true}  // Enable smooth scrolling
                             duration={500} // Duration of the scroll (in ms)
                             style={{ textDecorationLine: 'none', color: 'white' }}>Road Map</ScrollLink></button>
+                        <button><ScrollLink to="token"
+                            smooth={true}  // Enable smooth scrolling
+                            duration={500} // Duration of the scroll (in ms)
+                            style={{ textDecorationLine: 'none', color: 'white' }}>Token Distribution</ScrollLink></button>
                         {walletAddress ? (
                             <button className="wallet-btn hid1 d-flex align-items-center" style={{ gap: '8px' }} onClick={() => setIsModalOpen(true)}>
                                 {walletAddress.slice(0, 7)}...{walletAddress.slice(-4)}

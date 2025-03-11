@@ -571,44 +571,6 @@ function Home() {
                     </ReactModal>
                 </div>
             </div>
-            <div className="container-afflit">
-                <h2 className="h" style={{ color: '#fff',textAlign: 'center',marginBottom: '50px',fontSize: '34px' }}>Affiliate Program</h2>
-                <div className="container">
-                    <div className="roadmap-header w-100 text-center" style={{ marginBottom: '65px' }}>
-                        <h2 className="map-head" style={{ color: '#0094ff', fontSize: '17px' }}>How it works</h2>
-                        <h1 className="map-main-head text-center" >Simple Steps to Cashback <br /> Rewards
-                        </h1>
-                    </div>
-                    <div className="container-affli">
-                        <div className="left">
-                            <div className="car d-flex">
-                                <img src="https://blockdag.network/icons/referral-link.svg" style={{ width: 'calc(min(1px, 0.06944vw)*48)' }} height={'auto'} alt="" />
-                                <div className="info">
-                                    <h2>1. Use your affiliate link to <br /> get started.</h2>
-                                    <p>Every user will receive a unique Affiliate code upon connecting their wallet.</p>
-                                </div>
-                            </div>
-                            <div className="car d-flex">
-                                <img src="https://blockdag.network/icons/affiliate-system.svg" style={{ width: 'calc(min(1px, 0.06944vw)*48)' }} height={'auto'} alt="" />
-                                <div className="info">
-                                    <h2>2. Affiliate Program Works For <br /> You Perfectly</h2>
-                                    <p>Share it with your friends and community!</p>
-                                </div>
-                            </div>
-                            <div className="car d-flex">
-                                <img src="https://blockdag.network/icons/tether.svg" style={{ width: 'calc(min(1px, 0.06944vw)*48)' }} height={'auto'} alt="" />
-                                <div className="info">
-                                    <h2>3. Start Earning USDT Immediately</h2>
-                                    <p>Earn USDT BEP-20 cashback for every <br /> purchase made by your links. You'll receive 5% <br /> cashback instantly!</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="right">
-                            <img src="https://blockdag.network/images/referral-steps.webp" alt="image" />
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div className="refferal-section">
                 <div className="container">
                     <div className="row">
@@ -665,6 +627,44 @@ function Home() {
                         ></iframe>
                     </div>
                 )}
+            </div>
+            <div className="container-afflit">
+                <h2 className="h" style={{ color: '#fff', textAlign: 'center', marginBottom: '50px', fontSize: '34px' }}>Affiliate Program</h2>
+                <div className="container">
+                    <div className="roadmap-header w-100 text-center" style={{ marginBottom: '65px' }}>
+                        <h2 className="map-head" style={{ color: '#0094ff', fontSize: '17px' }}>How it works</h2>
+                        <h1 className="map-main-head text-center" >Simple Steps to Cashback <br /> Rewards
+                        </h1>
+                    </div>
+                    <div className="container-affli">
+                        <div className="left">
+                            <div className="car d-flex">
+                                <img src="https://blockdag.network/icons/referral-link.svg" style={{ width: 'calc(min(1px, 0.06944vw)*48)' }} height={'auto'} alt="" />
+                                <div className="info">
+                                    <h2>1. Use your affiliate link to <br /> get started.</h2>
+                                    <p>Every user will receive a unique Affiliate code upon connecting their wallet.</p>
+                                </div>
+                            </div>
+                            <div className="car d-flex">
+                                <img src="https://blockdag.network/icons/affiliate-system.svg" style={{ width: 'calc(min(1px, 0.06944vw)*48)' }} height={'auto'} alt="" />
+                                <div className="info">
+                                    <h2>2. Affiliate Program Works For <br /> You Perfectly</h2>
+                                    <p>Share it with your friends and community!</p>
+                                </div>
+                            </div>
+                            <div className="car d-flex">
+                                <img src="https://blockdag.network/icons/tether.svg" style={{ width: 'calc(min(1px, 0.06944vw)*48)' }} height={'auto'} alt="" />
+                                <div className="info">
+                                    <h2>3. Start Earning USDT Immediately</h2>
+                                    <p>Earn USDT BEP-20 cashback for every <br /> purchase made by your links. You'll receive 5% <br /> cashback instantly!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="right">
+                            <img src="https://blockdag.network/images/referral-steps.webp" alt="image" />
+                        </div>
+                    </div>
+                </div>
             </div>
             <div className="roadmap-container" style={{ padding: '140px 0' }}>
                 <div className="roadmap-content">

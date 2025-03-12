@@ -382,6 +382,8 @@ function Home() {
 
     // Conditional check for the current route
     const isOnHomePage = location.pathname === "/";  // Check if on / page
+
+    const [ResponsiveModal, setResponsiveModal] = useState(false)
     return (
         <>
             <div className="app-section" id="main">
@@ -404,32 +406,46 @@ function Home() {
                                 <img src={Logo} alt="Logo" />
                             </Link>
                         )}
-                        {walletAddress ? (
-                            <button className="wallet-btn hid2  align-items-center" style={{ gap: '8px' }} onClick={() => setIsModalOpen(true)}>
-                                {walletAddress.slice(0, 7)}...{walletAddress.slice(-4)}
-                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 32 36" fill="none">
-                                    <path d="M17.6142 26.3391C16.7214 27.218 15.2714 27.218 14.3785 26.3391L2.94996 15.0891C2.0571 14.2102 2.0571 12.7828 2.94996 11.9039C3.84282 11.025 5.29282 11.025 6.18568 11.9039L16 21.5648L25.8142 11.9109C26.7071 11.032 28.1571 11.032 29.05 11.9109C29.9428 12.7898 29.9428 14.2172 29.05 15.0961L17.6214 26.3461L17.6142 26.3391Z" fill="white" />
-                                </svg>
-                            </button>
-                        ) : (
-                            <button className="wallet-btn hid2" onClick={() => setIsModalOpen(true)}>Connect Wallet</button>
-                        )}
+                        <div className="d-flex align-items-center" style={{ gap: '18px' }}>
+                            {walletAddress ? (
+                                <button className="wallet-btn hid2  align-items-center" style={{ gap: '8px' }} onClick={() => setIsModalOpen(true)}>
+                                    {walletAddress.slice(0, 7)}...{walletAddress.slice(-4)}
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 32 36" fill="none">
+                                        <path d="M17.6142 26.3391C16.7214 27.218 15.2714 27.218 14.3785 26.3391L2.94996 15.0891C2.0571 14.2102 2.0571 12.7828 2.94996 11.9039C3.84282 11.025 5.29282 11.025 6.18568 11.9039L16 21.5648L25.8142 11.9109C26.7071 11.032 28.1571 11.032 29.05 11.9109C29.9428 12.7898 29.9428 14.2172 29.05 15.0961L17.6214 26.3461L17.6142 26.3391Z" fill="white" />
+                                    </svg>
+                                </button>
+                            ) : (
+                                <button className="wallet-btn hid2" onClick={() => setIsModalOpen(true)}>Connect Wallet</button>
+                            )}
+                            <button onClick={() => setResponsiveModal(!ResponsiveModal)} className="toggle-btns hid" style={{ display: 'none' }}><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 80 80" fill="none">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M10 22.5C10 21.837 10.2634 21.2011 10.7322 20.7322C11.2011 20.2634 11.837 20 12.5 20H67.5C68.163 20 68.7989 20.2634 69.2678 20.7322C69.7366 21.2011 70 21.837 70 22.5C70 23.163 69.7366 23.7989 69.2678 24.2678C68.7989 24.7366 68.163 25 67.5 25H12.5C11.837 25 11.2011 24.7366 10.7322 24.2678C10.2634 23.7989 10 23.163 10 22.5ZM10 40C10 39.337 10.2634 38.7011 10.7322 38.2322C11.2011 37.7634 11.837 37.5 12.5 37.5H67.5C68.163 37.5 68.7989 37.7634 69.2678 38.2322C69.7366 38.7011 70 39.337 70 40C70 40.663 69.7366 41.2989 69.2678 41.7678C68.7989 42.2366 68.163 42.5 67.5 42.5H12.5C11.837 42.5 11.2011 42.2366 10.7322 41.7678C10.2634 41.2989 10 40.663 10 40ZM37.5 57.5C37.5 56.837 37.7634 56.2011 38.2322 55.7322C38.7011 55.2634 39.337 55 40 55H67.5C68.163 55 68.7989 55.2634 69.2678 55.7322C69.7366 56.2011 70 56.837 70 57.5C70 58.163 69.7366 58.7989 69.2678 59.2678C68.7989 59.7366 68.163 60 67.5 60H40C39.337 60 38.7011 59.7366 38.2322 59.2678C37.7634 58.7989 37.5 58.163 37.5 57.5Z" fill="white" />
+                            </svg></button>
+
+                        </div>
                     </div>
-                    <div className="nav">
+                    <div className="nav hmmm">
                         {/* {walletAddress === adminAddress ? <button><Link style={{ textDecorationLine: 'none', color: 'white' }} to={'/all-blogs'}>Create Blog</Link></button> : ''} */}
-                        <button><Link style={{ textDecorationLine: 'none', color: 'white' }} to={'/all-blogs'}>Create Blog</Link></button>
-                        <button><ScrollLink to="affiliate"
+                        <button className="hmm"><Link style={{ textDecorationLine: 'none', color: 'white' }} to={'/all-blogs'}>Create Blog</Link></button>
+                        <button className="hmm"><ScrollLink to="affiliate"
                             smooth={true}  // Enable smooth scrolling
                             duration={500} // Duration of the scroll (in ms)
                             style={{ textDecorationLine: 'none', color: 'white' }}>Affiliate Program</ScrollLink></button>
-                        <button><ScrollLink to="roadmap"
+                        <button className="hmm"><ScrollLink to="roadmap"
                             smooth={true}  // Enable smooth scrolling
                             duration={500} // Duration of the scroll (in ms)
                             style={{ textDecorationLine: 'none', color: 'white' }}>Road Map</ScrollLink></button>
-                        <button><ScrollLink to="token"
+                        <button className="hmm"><ScrollLink to="token"
                             smooth={true}  // Enable smooth scrolling
                             duration={500} // Duration of the scroll (in ms)
                             style={{ textDecorationLine: 'none', color: 'white' }}>Token Distribution</ScrollLink></button>
+                        <button  className="hmm"><ScrollLink to="blog"
+                            smooth={true}  // Enable smooth scrolling
+                            duration={500} // Duration of the scroll (in ms)
+                            style={{ textDecorationLine: 'none', color: 'white' }}>Blogs</ScrollLink></button>
+                        <button  className="hmm"><ScrollLink to="faq"
+                            smooth={true}  // Enable smooth scrolling
+                            duration={500} // Duration of the scroll (in ms)
+                            style={{ textDecorationLine: 'none', color: 'white' }}>Faqs</ScrollLink></button>
                         {walletAddress ? (
                             <button className="wallet-btn hid1 d-flex align-items-center" style={{ gap: '8px' }} onClick={() => setIsModalOpen(true)}>
                                 {walletAddress.slice(0, 7)}...{walletAddress.slice(-4)}
@@ -440,6 +456,9 @@ function Home() {
                         ) : (
                             <button className="wallet-btn hid1" onClick={() => setIsModalOpen(true)}>Connect Wallet</button>
                         )}
+                        <button onClick={() => setResponsiveModal(!ResponsiveModal)} className="toggle-btn hidd" style={{ display: 'none' }}><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 80 80" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M10 22.5C10 21.837 10.2634 21.2011 10.7322 20.7322C11.2011 20.2634 11.837 20 12.5 20H67.5C68.163 20 68.7989 20.2634 69.2678 20.7322C69.7366 21.2011 70 21.837 70 22.5C70 23.163 69.7366 23.7989 69.2678 24.2678C68.7989 24.7366 68.163 25 67.5 25H12.5C11.837 25 11.2011 24.7366 10.7322 24.2678C10.2634 23.7989 10 23.163 10 22.5ZM10 40C10 39.337 10.2634 38.7011 10.7322 38.2322C11.2011 37.7634 11.837 37.5 12.5 37.5H67.5C68.163 37.5 68.7989 37.7634 69.2678 38.2322C69.7366 38.7011 70 39.337 70 40C70 40.663 69.7366 41.2989 69.2678 41.7678C68.7989 42.2366 68.163 42.5 67.5 42.5H12.5C11.837 42.5 11.2011 42.2366 10.7322 41.7678C10.2634 41.2989 10 40.663 10 40ZM37.5 57.5C37.5 56.837 37.7634 56.2011 38.2322 55.7322C38.7011 55.2634 39.337 55 40 55H67.5C68.163 55 68.7989 55.2634 69.2678 55.7322C69.7366 56.2011 70 56.837 70 57.5C70 58.163 69.7366 58.7989 69.2678 59.2678C68.7989 59.7366 68.163 60 67.5 60H40C39.337 60 38.7011 59.7366 38.2322 59.2678C37.7634 58.7989 37.5 58.163 37.5 57.5Z" fill="white" />
+                        </svg></button>
                     </div>
                 </header>
                 <div className="container" style={{ paddingTop: '110px' }}>
@@ -473,7 +492,7 @@ function Home() {
 
                         </div>
                         <div className="col-xl-5 col-12">
-                            <div className="right-sec ">
+                            <div className="right-sec right-hid">
                                 <div style={{ position: 'relative', width: '100%', height: '100%' }}>
                                     <div className="overlay-img">
                                         <img src="data:image/svg+xml,%3csvg%20width='106'%20height='129'%20viewBox='0%200%20106%20129'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20clip-path='url(%23clip0_2_1188)'%3e%3cpath%20d='M106%2087.865C106%20100.466%20102.25%20109.922%2095.9538%20115.533C93.9708%20117.302%2082.073%20125.589%2079.624%20126.572C71.3489%20129.895%2070.2853%20121.721%2058.5655%20115.013C32.3674%20100.021%2011.1309%2063.557%2011.1309%2033.57C11.1309%2022.1322%203.49564%2020.4352%208.77086%2014.7016C10.1437%2013.2104%2022.3932%204.7843%2024.0457%203.72159C32.6936%20-1.8314%2044.9601%20-1.36515%2058.5655%206.42248C84.7636%2021.4139%20106%2057.878%20106%2087.865Z'%20fill='url(%23paint0_linear_2_1188)'/%3e%3cpath%20d='M94.8649%2095.43C94.8649%20125.417%2073.6284%20137.573%2047.4303%20122.578C21.2322%20107.582%200%2071.1178%200%2041.1308C0%2011.1438%2021.2364%20-1.00811%2047.4345%2013.9833C73.6284%2028.9789%2094.8649%2065.443%2094.8649%2095.43Z'%20fill='url(%23paint1_linear_2_1188)'/%3e%3cpath%20d='M76.9509%20119.128C93.3333%20109.751%2093.3338%2079.3473%2076.9519%2051.2195C60.5701%2023.0917%2034.0094%207.89102%2017.627%2017.2678C1.24456%2026.6446%201.2441%2057.0481%2017.6259%2085.1759C34.0078%20113.304%2060.5685%20128.504%2076.9509%20119.128Z'%20stroke='%2384E4A4'%20stroke-width='0.6873'%20stroke-miterlimit='10'/%3e%3c/g%3e%3cdefs%3e%3clinearGradient%20id='paint0_linear_2_1188'%20x1='166.254'%20y1='28.7716'%20x2='55.8176'%20y2='64.1084'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0.0873'%20stop-color='%2384E4A4'/%3e%3cstop%20offset='0.9709'%20stop-color='%233C53D7'/%3e%3c/linearGradient%3e%3clinearGradient%20id='paint1_linear_2_1188'%20x1='45.5899'%20y1='22.1576'%20x2='3.18783'%20y2='106.806'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0.0873'%20stop-color='%2384E4A4'/%3e%3cstop%20offset='0.9709'%20stop-color='%233C53D7'/%3e%3c/linearGradient%3e%3cclipPath%20id='clip0_2_1188'%3e%3crect%20width='106'%20height='129'%20fill='white'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e" alt="coin" />
@@ -496,6 +515,7 @@ function Home() {
                             </div>
                         </div>
                     </div>
+
                     {/* Wallet Connection Modal */}
                     <ReactModal
                         isOpen={isModalOpen}
@@ -602,7 +622,59 @@ function Home() {
 
                     </ReactModal>
                 </div>
-            </div>
+                <div className="right-sec right-show">
+                    <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+                        <div className="overlay-img">
+                            <img src="data:image/svg+xml,%3csvg%20width='106'%20height='129'%20viewBox='0%200%20106%20129'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20clip-path='url(%23clip0_2_1188)'%3e%3cpath%20d='M106%2087.865C106%20100.466%20102.25%20109.922%2095.9538%20115.533C93.9708%20117.302%2082.073%20125.589%2079.624%20126.572C71.3489%20129.895%2070.2853%20121.721%2058.5655%20115.013C32.3674%20100.021%2011.1309%2063.557%2011.1309%2033.57C11.1309%2022.1322%203.49564%2020.4352%208.77086%2014.7016C10.1437%2013.2104%2022.3932%204.7843%2024.0457%203.72159C32.6936%20-1.8314%2044.9601%20-1.36515%2058.5655%206.42248C84.7636%2021.4139%20106%2057.878%20106%2087.865Z'%20fill='url(%23paint0_linear_2_1188)'/%3e%3cpath%20d='M94.8649%2095.43C94.8649%20125.417%2073.6284%20137.573%2047.4303%20122.578C21.2322%20107.582%200%2071.1178%200%2041.1308C0%2011.1438%2021.2364%20-1.00811%2047.4345%2013.9833C73.6284%2028.9789%2094.8649%2065.443%2094.8649%2095.43Z'%20fill='url(%23paint1_linear_2_1188)'/%3e%3cpath%20d='M76.9509%20119.128C93.3333%20109.751%2093.3338%2079.3473%2076.9519%2051.2195C60.5701%2023.0917%2034.0094%207.89102%2017.627%2017.2678C1.24456%2026.6446%201.2441%2057.0481%2017.6259%2085.1759C34.0078%20113.304%2060.5685%20128.504%2076.9509%20119.128Z'%20stroke='%2384E4A4'%20stroke-width='0.6873'%20stroke-miterlimit='10'/%3e%3c/g%3e%3cdefs%3e%3clinearGradient%20id='paint0_linear_2_1188'%20x1='166.254'%20y1='28.7716'%20x2='55.8176'%20y2='64.1084'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0.0873'%20stop-color='%2384E4A4'/%3e%3cstop%20offset='0.9709'%20stop-color='%233C53D7'/%3e%3c/linearGradient%3e%3clinearGradient%20id='paint1_linear_2_1188'%20x1='45.5899'%20y1='22.1576'%20x2='3.18783'%20y2='106.806'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0.0873'%20stop-color='%2384E4A4'/%3e%3cstop%20offset='0.9709'%20stop-color='%233C53D7'/%3e%3c/linearGradient%3e%3cclipPath%20id='clip0_2_1188'%3e%3crect%20width='106'%20height='129'%20fill='white'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e" alt="coin" />
+                        </div>
+                        <div className="bg-blur-right">
+                            <div className="countdown">
+                                <h2>Pre-Sale ends in</h2>
+                                <h1>{getRemainingTime(countdown)}</h1>
+                                <div className="socials mt-5">
+                                    <a href='https://web.telegram.org/'><img src={tel_ico} alt="telegram" /></a>
+                                    <a href='https://discord.com/'><img src={dis_ico} alt="discord" /></a>
+                                    <a href='https://twitter.com/'><img src={twi_ico} alt="twitter" /></a>
+                                    <a href='https://medium.com/'><img src={o_ico} alt="medium" /></a>
+                                    <a href='https://www.reddit.com/?rdt=49993'><img src={i_ico} alt="reddit" /></a>
+                                    <a href='https://www.linkedin.com/'><img src={lin_ico} alt="linkedin" /></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className={`responsive-header ${ResponsiveModal === true ? 'open' : ''}`}>
+                    <button className="mt-0" onClick={() => setResponsiveModal(false)} style={{ borderRadius: '50px', position: 'absolute', right: '32px', zIndex: '1000', top: '36px' }}>
+                        <svg aria-hidden="true" fill="none" height="13" viewBox="0 0 10 10" width="13" xmlns="http://www.w3.org/2000/svg"><title>Close</title><path d="M1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L3.58579 5L0.292893 8.29289C-0.0976311 8.68342 -0.0976311 9.31658 0.292893 9.70711C0.683417 10.0976 1.31658 10.0976 1.70711 9.70711L5 6.41421L8.29289 9.70711C8.68342 10.0976 9.31658 10.0976 9.70711 9.70711C10.0976 9.31658 10.0976 8.68342 9.70711 8.29289L6.41421 5L9.70711 1.70711C10.0976 1.31658 10.0976 0.683417 9.70711 0.292893C9.31658 -0.0976311 8.68342 -0.0976311 8.29289 0.292893L5 3.58579L1.70711 0.292893Z" fill="#fff"></path></svg></button>
+                    <button
+                        onClick={() => setResponsiveModal(false)}><Link style={{ textDecorationLine: 'none', color: 'white' }} to={'/all-blogs'}>Create Blog</Link></button>
+                    <button><ScrollLink to="affiliate"
+                        onClick={() => setResponsiveModal(false)}
+                        smooth={true}  // Enable smooth scrolling
+                        duration={500} // Duration of the scroll (in ms)
+                        style={{ textDecorationLine: 'none', color: 'white' }}>Affiliate Program</ScrollLink></button>
+                    <button><ScrollLink to="roadmap"
+                        onClick={() => setResponsiveModal(false)}
+                        smooth={true}  // Enable smooth scrolling
+                        duration={500} // Duration of the scroll (in ms)
+                        style={{ textDecorationLine: 'none', color: 'white' }}>Road Map</ScrollLink></button>
+                    <button><ScrollLink to="token"
+                        onClick={() => setResponsiveModal(false)}
+                        smooth={true}  // Enable smooth scrolling
+                        duration={500} // Duration of the scroll (in ms)
+                        style={{ textDecorationLine: 'none', color: 'white' }}>Token Distribution</ScrollLink></button>
+                    <button><ScrollLink to="blog"
+                        onClick={() => setResponsiveModal(false)}
+                        smooth={true}  // Enable smooth scrolling
+                        duration={500} // Duration of the scroll (in ms)
+                        style={{ textDecorationLine: 'none', color: 'white' }}>Blogs</ScrollLink></button>
+                    <button><ScrollLink to="faq"
+                        onClick={() => setResponsiveModal(false)}
+                        smooth={true}  // Enable smooth scrolling
+                        duration={500} // Duration of the scroll (in ms)
+                        style={{ textDecorationLine: 'none', color: 'white' }}>Faqs</ScrollLink></button>
+                </div>
+            </div >
             <div className="video-container" style={{ position: 'relative' }}>
                 {!isVideoPlaying ? (
                     <div className="bg-image">
@@ -746,7 +818,7 @@ function Home() {
                 </div>
 
             </div>
-            <div className="slider-container container" style={{ position: 'relative', height: blogPosts.length !== 0 ? 'auto' : '100vh' }}>
+            <div className="slider-container container" id="blog" style={{ position: 'relative', height: blogPosts.length !== 0 ? 'auto' : '100vh' }}>
                 <div className="heading" style={{ margin: '50px 0 80px 0' }}>
                     <h1 className="map-main-head" style={{ color: '#000' }}>Latest News & Blog</h1>
                 </div>
@@ -768,7 +840,7 @@ function Home() {
                     <div className="spinner" style={{ color: '#000' }}></div>
                 </div>}
             </div>
-            <div className="faq-container text-center container">
+            <div className="faq-container text-center container" id="faq">
                 <div className="heading" style={{ margin: '0px 0 60px 0' }}>
                     <h1 className="map-main-head" style={{ color: '#000' }}>Have any questions?</h1>
                 </div>
